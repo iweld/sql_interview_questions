@@ -140,8 +140,84 @@ id|name   |
  7|jane   |
 10|fred   |
 
+/*
+ 	As we can see all higher value id's have been deleted.
+*/
 
-3- Difference between union and union all
+
+-- 3- Difference between union and union all
+
+/*
+ 	The union operator combines two or more select statements into one result set.
+ 	UNION returns only DISTINCT values.  So no duplicate values in the final result set.
+ 	UNION ALL returns EVERYTHING including duplicates.
+ 	
+ 	Please note that To use UNION, each SELECT statement must 
+ 		1. Have the same number of columns selected.
+ 		2. Have the same number of column expressions.
+ 		3. Have the same data type.
+ 		4. Have them in the same order.
+ 	
+ 	Let's create two small tables to illustrate this.
+*/
+
+DROP TABLE IF EXISTS coolest_guy_ever;
+CREATE TABLE coolest_guy_ever (
+	name TEXT,
+	year smallint
+);
+
+INSERT INTO coolest_guy_ever (name, year)
+VALUES
+	('jaime shaker', '1998'),
+	('jame dean', '1954'),
+	('arthur fonzarelli', '1960');
+
+DROP TABLE IF EXISTS sexiest_guy_ever;
+CREATE TABLE sexiest_guy_ever (
+	name TEXT,
+	year smallint
+);
+
+INSERT INTO sexiest_guy_ever (name, year)
+VALUES
+	('brad pitt', '1994'),
+	('jaime shaker', '1998'),
+	('george clooney', '2001');
+
+-- Lets use a simple UNION
+
+SELECT * FROM coolest_guy_ever
+UNION
+SELECT * FROM sexiest_guy_ever;
+
+-- Results: (only distinct entries)
+
+name             |year|
+-----------------+----+
+jame dean        |1954|
+george clooney   |2001|
+brad pitt        |1994|
+arthur fonzarelli|1960|
+jaime shaker     |1998|
+
+-- Lets use a simple UNION ALL
+
+SELECT * FROM coolest_guy_ever
+UNION ALL
+SELECT * FROM sexiest_guy_ever;
+
+-- Results: (returns duplicate entries)
+
+name             |year|
+-----------------+----+
+jaime shaker     |1998| <---
+jame dean        |1954|
+arthur fonzarelli|1960|
+brad pitt        |1994|
+jaime shaker     |1998| <--- 
+george clooney   |2001|
+
 4- Difference between rank,row_number and dense_rank
 5- Find records in a table which are not present in another table
 6- Find second highest salary employees in each department
