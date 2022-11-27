@@ -80,6 +80,67 @@ robert|    3|
 
 
 -- 2- How to delete duplicates from a table
+
+/*
+ 	We can delete duplicate rows by using a delete statement.
+ 	
+	We can use the table created in the previous question to learn how to delete
+	those duplicates.
+*/
+
+DELETE 
+FROM 
+	-- Add an alias to the id's we wish to keep
+	duplicate_names AS d1
+USING 
+	-- Add an alias to the duplicate id's
+	duplicate_names AS  d2
+WHERE 
+	-- This statement will remove the greater value id's.
+	d1.id > d2.id
+AND 
+	-- This statement ensures that both values are identical.
+	d1.name = d2.name;
+
+/*
+ 	It is always good practice to run a DELETE USING statement as a SELECT statement FIRST to ensure
+ 	your query is working correctly.
+ 	
+	Let us run our previous query to check for duplicates.
+*/
+
+SELECT
+	name,
+	count(*)
+FROM
+	duplicate_names
+GROUP BY
+	name
+HAVING
+	count(*) > 1;
+
+-- Results:
+
+name|count|
+----+-----+
+
+-- Lets check the original table's content.
+
+SELECT * FROM duplicate_names;
+
+-- Results:
+
+id|name   |
+--+-------+
+ 1|jaime  |
+ 2|robert |
+ 3|william|
+ 4|lisa   |
+ 6|john   |
+ 7|jane   |
+10|fred   |
+
+
 3- Difference between union and union all
 4- Difference between rank,row_number and dense_rank
 5- Find records in a table which are not present in another table
