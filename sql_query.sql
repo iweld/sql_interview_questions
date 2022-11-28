@@ -218,7 +218,64 @@ brad pitt        |1994|
 jaime shaker     |1998| <--- 
 george clooney   |2001|
 
-4- Difference between rank,row_number and dense_rank
+-- 4- Difference between rank,row_number and dense_rank?
+
+/*
+ 	RANK, DENSE_RANK and ROW_NUMBER are all analytical window functions.
+ 	RANK: Will rank a column but will skip a value if there are ties.
+ 	DENSE_RANK: Will rank a column bbut will NOT skip a value for ties.
+ 	ROW_NUMBER: Assigns a unique row number to each row.
+ 	
+ 	Let's display these functions with a simple table of users and salaries.
+*/
+
+DROP TABLE IF EXISTS user_salary;
+CREATE TABLE user_salary (
+	user_name TEXT,
+	salary int
+);
+
+INSERT INTO user_salary (user_name, salary)
+VALUES 
+	('jaime', 100000),
+	('robert', 105000),
+	('elizabeth', 150000),
+	('josh', 80000),
+	('mary', 105000),
+	('heather', 80000),
+	('jennifer', 75000),
+	('ken', 80000);
+
+-- Lets use the window functions to show how they work.
+
+SELECT
+	user_name,
+	salary,
+	RANK() OVER (ORDER BY salary desc),
+	DENSE_RANK() OVER (ORDER BY salary desc),
+	ROW_NUMBER() OVER ()
+FROM
+	user_salary;
+
+/*
+ 	The results are ordered by salary going from highest to lowest.
+ 	RANK: Shows that some user salaries tied, but then skips that amount until the next rank.
+ 	DENSE_RANK: Shows that some user salaries tied, but but does NOT skip anything and goes immediately to the next rank. 
+ 	ROW_NUMBER: Gives a unique row number to every row.
+*/
+
+user_name|salary|rank|dense_rank|row_number|
+---------+------+----+----------+----------+
+elizabeth|150000|   1|         1|         1|
+mary     |105000|   2|         2|         2|
+robert   |105000|   2|         2|         3|
+jaime    |100000|   4|         3|         4|
+josh     | 80000|   5|         4|         5|
+heather  | 80000|   5|         4|         6|
+ken      | 80000|   5|         4|         7|
+jennifer | 75000|   8|         5|         8|
+
+
 5- Find records in a table which are not present in another table
 6- Find second highest salary employees in each department
 7- Find employees with salary more than their manager's salary
