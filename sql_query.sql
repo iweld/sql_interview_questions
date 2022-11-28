@@ -4,7 +4,7 @@
 	found online.
 */
 
--- 1- How to find duplicates in a table?
+-- 1. How to find duplicates in a table?
 
 /*
 	To find the duplicates in a table, let's create a table with some
@@ -79,7 +79,7 @@ lisa  |    2|
 robert|    3|
 
 
--- 2- How to delete duplicates from a table
+-- 2. How to delete duplicates from a table
 
 /*
  	We can delete duplicate rows by using a delete statement.
@@ -145,7 +145,7 @@ id|name   |
 */
 
 
--- 3- Difference between union and union all
+-- 3. Difference between union and union all
 
 /*
  	The union operator combines two or more select statements into one result set.
@@ -218,7 +218,7 @@ brad pitt        |1994|
 jaime shaker     |1998| <--- 
 george clooney   |2001|
 
--- 4- Difference between rank,row_number and dense_rank?
+-- 4. Difference between rank,row_number and dense_rank?
 
 /*
  	RANK, DENSE_RANK and ROW_NUMBER are all analytical window functions.
@@ -258,7 +258,7 @@ FROM
 	user_salary;
 
 /*
- 	The results are ordered by salary going from highest to lowest.
+ 	The results are ordered by salary in descending order.
  	RANK: Shows that some user salaries tied, but then skips that amount until the next rank.
  	DENSE_RANK: Shows that some user salaries tied, but but does NOT skip anything and goes immediately to the next rank. 
  	ROW_NUMBER: Gives a unique row number to every row.
@@ -276,7 +276,70 @@ ken      | 80000|   5|         4|         7|
 jennifer | 75000|   8|         5|         8|
 
 
-5- Find records in a table which are not present in another table
+-- 5. Find records in a table which are not present in another table
+
+/*
+ 	This type of a join is called an anti-join.  An anti join does not have it's own syntax.
+ 	It is basically a left join (or right join) with a WHERE clause.
+ 	
+ 	Let's display this by performing a LEFT ANTI-JOIN.
+ 	
+ 	Let's create 2 different tables for this query.
+*/
+
+-- Create first table and add values
+DROP TABLE IF EXISTS left_table;
+CREATE TABLE left_table (
+	id int
+);
+
+INSERT INTO left_table (id)
+VALUES 
+	(1),
+	(2),
+	(3),
+	(4),
+	(5),
+	(6);
+
+-- Create first table and add values
+DROP TABLE IF EXISTS right_table;
+CREATE TABLE right_table (
+	id int
+);
+
+INSERT INTO right_table (id)
+VALUES 
+	(2),
+	(2),
+	(3),
+	(6),
+	(6),
+	(6);
+
+-- Let's perform our LEFT ANTI-JOIN
+
+SELECT
+	lt.id
+FROM left_table AS lt
+LEFT JOIN right_table AS rt
+ON lt.id = rt.id
+WHERE rt.id IS null;
+
+/*
+ 	This query returns the values in the LEFT TABLE that are NOT
+ 	in the RIGHT TABLE.
+*/
+
+-- Results:
+
+id|
+--+
+ 1|
+ 4|
+ 5|
+
+
 6- Find second highest salary employees in each department
 7- Find employees with salary more than their manager's salary
 8- Difference between inner and left join
