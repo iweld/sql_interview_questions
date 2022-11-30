@@ -79,7 +79,7 @@ lisa  |    2|
 robert|    3|
 
 
--- 2. How to delete duplicates from a table
+-- 2. How to delete duplicates from a table?
 
 /*
  	We can delete duplicate rows by using a delete statement.
@@ -145,7 +145,7 @@ id|name   |
 */
 
 
--- 3. Difference between union and union all
+-- 3. Difference between union and union all?
 
 /*
  	The union operator combines two or more select statements into one result set.
@@ -276,7 +276,7 @@ ken      | 80000|   5|         4|         7|
 jennifer | 75000|   8|         5|         8|
 
 
--- 5. Find records in a table which are not present in another table
+-- 5. Find records in a table which are not present in another table.
 
 /*
  	This type of a join is called an anti-join.  An anti join does not have it's own syntax.
@@ -404,7 +404,7 @@ robert  |IT        | 75000|  2|
 jane    |SALES     | 80000|  2|
  
 
--- 7. Find employees with salary more than their manager's salary.
+-- 7. Find employees with greater salaries than their manager's salary.
 
 /*
  	Using the employee salary from the previous question, we can 
