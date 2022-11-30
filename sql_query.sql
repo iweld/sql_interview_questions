@@ -727,6 +727,11 @@ from
 
 -- Results:
 
+/*
+ 	Every row in the left table will be join to every row in the right table. 	
+*/
+
+
 result_count|
 ------------+
           36|
