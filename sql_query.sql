@@ -504,7 +504,80 @@ id|
  6|
 
 
-9- update a table and swap gender values.
+-- 9. Update a table and swap gender values.
+
+/*
+ 	This question can be answered using a simple CASE statement in an update query.
+ 	
+ 	First, lets create a simple table where (M)ales have odd id numbers and (F)emales
+ 	have even id numbers.
+ 	
+*/
+ 
+DROP TABLE IF EXISTS people;
+CREATE TABLE people (
+	id serial,
+	name TEXT,
+	gender varchar(1)
+);
+
+INSERT INTO people (name, gender)
+VALUES
+	('mike', 'M'),
+	('sarah', 'F'),
+	('john', 'M'),
+	('lisa', 'F'),
+	('jacob', 'M'),
+	('ellen', 'F'),
+	('christopher', 'M'),
+	('maria', 'F');
+
+-- Let's take a look at the table
+
+SELECT * FROM people;
+
+-- Results:
+
+id|name       |gender|
+--+-----------+------+
+ 1|mike       |M     |
+ 2|sarah      |F     |
+ 3|john       |M     |
+ 4|lisa       |F     |
+ 5|jacob      |M     |
+ 6|ellen      |F     |
+ 7|christopher|M     |
+ 8|maria      |F     |
+ 
+-- Now lets UPDATE the table and swap the gender values.
+ 
+UPDATE people
+SET gender = 
+	CASE
+		WHEN gender = 'M' THEN 'F'
+		ELSE 'M'
+	END
+WHERE
+	gender IS NOT NULL;
+
+-- Let's take a look at the UPDATED table
+
+SELECT * FROM people;
+
+-- Results:
+
+id|name       |gender|
+--+-----------+------+
+ 1|mike       |F     |
+ 2|sarah      |M     |
+ 3|john       |F     |
+ 4|lisa       |M     |
+ 5|jacob      |F     |
+ 6|ellen      |M     |
+ 7|christopher|F     |
+ 8|maria      |M     |
+
+
 10- Number of records in output with different kinds of join.
 
 
