@@ -578,16 +578,158 @@ id|name       |gender|
  8|maria      |M     |
 
 
-10- Number of records in output with different kinds of join.
+-- 10. Number of records in output with different kinds of join.
 
+/*
+ 	Using the left_table and right_table from question #5, lets get the count
+ 	of the results returned for an...
+ 	
+ 	INNER JOIN
+ 	LEFT JOIN
+ 	RIGHT JOIN
+ 	FULL OUTER JOIN
+ 	CROSS JOIN 	
+*/
 
+-- INNER JOIN
+ 
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		lt.id
+	FROM
+		left_table AS lt
+	INNER JOIN 
+		right_table AS rt
+	ON
+		lt.id = rt.id) AS tmp
 
+-- Results:
+		
+id|
+--+
+ 2|
+ 2|
+ 3|
+ 6|
+ 6|
+ 6|
+		
+result_count|
+------------+
+           6|
+           
+-- LEFT JOIN
+ 
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		lt.id
+	FROM
+		left_table AS lt
+	LEFT JOIN 
+		right_table AS rt
+	ON
+		lt.id = rt.id) AS tmp
 
+-- Results:
 
+id|
+--+
+ 1|
+ 2|
+ 2|
+ 3|
+ 4|
+ 5|
+ 6|
+ 6|
+ 6|
+		
+result_count|
+------------+
+           9|
+           
+-- RIGHT JOIN
+ 
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		rt.id
+	FROM
+		right_table AS rt
+	LEFT JOIN 
+		left_table AS lt
+	ON
+		lt.id = rt.id) AS tmp
 
+-- Results:
+		
+id|
+--+
+ 2|
+ 2|
+ 3|
+ 6|
+ 6|
+ 6|
+		
+result_count|
+------------+
+           6|
+           
+-- FULL OUTER JOIN
+ 
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		lt.id
+	FROM
+		left_table AS lt
+	FULL OUTER JOIN 
+		right_table AS rt
+	ON
+		lt.id = rt.id) AS tmp
 
+-- Results:
+		
+id|
+--+
+ 1|
+ 2|
+ 2|
+ 3|
+ 4|
+ 5|
+ 6|
+ 6|
+ 6|
+		
+result_count|
+------------+
+           9|
+           
+-- CROSS JOIN
+ 
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		lt.id
+	FROM
+		left_table AS lt
+	CROSS JOIN 
+		right_table AS rt) AS tmp
 
+-- Results:
 
+result_count|
+------------+
+          36|
 
 
 
