@@ -4,10 +4,10 @@
 	found online.
 */
 
--- 1. How to find duplicates in a table?
+-- 1. How do you find duplicates in a table?
 
 /*
-	To find the duplicates in a table, let's create a table with some
+	To find the duplicates in a table, let's first create a table with some
 	duplicate rows.
 */
 
@@ -79,10 +79,10 @@ lisa  |    2|
 robert|    3|
 
 
--- 2. How to delete duplicates from a table?
+-- 2. How do you delete duplicates from a table?
 
 /*
- 	We can delete duplicate rows by using a delete statement.
+ 	We can delete duplicate rows by using a DELETE USING statement.
  	
 	We can use the table created in the previous question to learn how to delete
 	those duplicates.
