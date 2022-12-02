@@ -304,7 +304,7 @@ VALUES
 	(5),
 	(6);
 
--- Create first table and add values
+-- Create second table and add values
 DROP TABLE IF EXISTS right_table;
 CREATE TABLE right_table (
 	id int
@@ -347,7 +347,7 @@ id|
  	This question will require us to rank salaries and partition that ranking
  	by the department of each individual employee.
  	
- 	I will also add a manager id column to use this table in the next question.
+ 	I will also add a manager id column so as to use this table in the next question also.
 */
  
 DROP TABLE IF EXISTS employee;
@@ -385,7 +385,7 @@ WITH get_salary_rank AS (
 		employee
 )
 
--- Select name, department and salary where the rank = 2
+-- Select name, department and salary where the rank = 2 from the CTE result set.
 
 SELECT
 	emp_name,

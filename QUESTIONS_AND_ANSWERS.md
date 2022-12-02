@@ -273,7 +273,7 @@ jennifer | 75000|   8|         5|         8|
 
 #### 5. Find records in a table which are not present in another table.
 
-This type of a join is called an **anti-join**.  An anti join does not have it's own syntax.
+This type of a join is called an **anti-join**.  An anti-join does not have it's own syntax.
 It is basically a left join (or right join) with a WHERE clause.
  	
 Let's display this by performing a **LEFT ANTI-JOIN**.
@@ -335,3 +335,71 @@ id|
  1|
  4|
  5|
+
+ #### 6. Find second highest salary employees in each department.
+
+This question will require us to rank salaries and partition that ranking
+by the department of each individual employee.
+ 	
+I will also add a manager id column so as to use this table in the next question also.
+
+````sql
+DROP TABLE IF EXISTS employee;
+CREATE TABLE employee (
+	emp_id int,
+	emp_name TEXT,
+	manager_id int,
+	department TEXT,
+	salary int
+);
+
+INSERT INTO employee (emp_id, emp_name, manager_id, department, salary)
+VALUES
+	(1, 'jaime', 0, 'IT', 85000),
+	(2, 'robert', 1, 'IT', 75000),
+	(3, 'lisa', 1, 'IT', 65000),
+	(4, 'chris', 1, 'IT', 55000),
+	(5, 'mary', 7, 'SALES', 55000),
+	(6, 'richard', 7, 'SALES', 85000),
+	(7, 'jane', 0, 'SALES', 80000),
+	(8, 'trevor', 7, 'SALES', 65000),
+	(9, 'joan', 12, 'HR', 55000),
+	(10, 'jennifer', 12, 'HR', 71000),
+	(11, 'trish', 12, 'HR', 58000),
+	(12, 'marge', 0, 'HR', 70000);
+````
+
+Let's create a CTE (**Common Table Expression**) that assigns a rank value to each row by partition.
+
+````sql
+WITH get_salary_rank AS (
+	SELECT
+		emp_name,
+		department,
+		salary,
+		DENSE_RANK() OVER (PARTITION BY department ORDER BY salary desc) AS rnk
+	FROM
+		employee
+)
+````
+Now, lets select **name**, **department** and **salary** where the rank = 2 from the CTE result set.
+
+````sql
+SELECT
+	emp_name,
+	department,
+	salary,
+	rnk
+FROM
+	get_salary_rank
+WHERE
+	rnk = 2;
+````
+
+**Results:**
+
+emp_name|department|salary|rnk|
+--------|----------|------|---|
+marge   |HR        | 70000|  2|
+robert  |IT        | 75000|  2|
+jane    |SALES     | 80000|  2|
