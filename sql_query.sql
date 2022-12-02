@@ -145,14 +145,14 @@ id|name   |
 */
 
 
--- 3. Difference between union and union all?
+-- 3. What is the difference between union and union all?
 
 /*
  	The union operator combines two or more select statements into one result set.
  	UNION returns only DISTINCT values.  So no duplicate values in the final result set.
  	UNION ALL returns EVERYTHING including duplicates.
  	
- 	Please note that To use UNION, each SELECT statement must 
+ 	Please note that to use UNION, each SELECT statement must 
  		1. Have the same number of columns selected.
  		2. Have the same number of column expressions.
  		3. Have the same data type.
@@ -263,6 +263,8 @@ FROM
  	DENSE_RANK: Shows that some user salaries tied, but but does NOT skip anything and goes immediately to the next rank. 
  	ROW_NUMBER: Gives a unique row number to every row.
 */
+
+-- Results:
 
 user_name|salary|rank|dense_rank|row_number|
 ---------+------+----+----------+----------+
