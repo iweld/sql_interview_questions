@@ -270,3 +270,68 @@ josh     | 80000|   5|         4|         5|
 heather  | 80000|   5|         4|         6|
 ken      | 80000|   5|         4|         7|
 jennifer | 75000|   8|         5|         8|
+
+#### 5. Find records in a table which are not present in another table.
+
+This type of a join is called an **anti-join**.  An anti join does not have it's own syntax.
+It is basically a left join (or right join) with a WHERE clause.
+ 	
+Let's display this by performing a **LEFT ANTI-JOIN**.
+ 	
+Let's create 2 different tables for this query.
+
+````sql
+-- Create first table and add values
+DROP TABLE IF EXISTS left_table;
+CREATE TABLE left_table (
+	id int
+);
+
+INSERT INTO left_table (id)
+VALUES 
+	(1),
+	(2),
+	(3),
+	(4),
+	(5),
+	(6);
+````
+
+````sql
+-- Create second table and add values
+DROP TABLE IF EXISTS right_table;
+CREATE TABLE right_table (
+	id int
+);
+
+INSERT INTO right_table (id)
+VALUES 
+	(2),
+	(2),
+	(3),
+	(6),
+	(6),
+	(6);
+````
+
+Let's perform our **LEFT ANTI-JOIN**.
+
+````sql
+SELECT
+	lt.id
+FROM left_table AS lt
+LEFT JOIN right_table AS rt
+ON lt.id = rt.id
+WHERE rt.id IS null;
+````
+
+**Results:**
+
+This query returns the values in the LEFT TABLE that are **NOT**
+in the RIGHT TABLE.
+
+id|
+--|
+ 1|
+ 4|
+ 5|
