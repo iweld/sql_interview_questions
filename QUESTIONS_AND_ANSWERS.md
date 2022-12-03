@@ -403,3 +403,28 @@ emp_name|department|salary|rnk|
 marge   |HR        | 70000|  2|
 robert  |IT        | 75000|  2|
 jane    |SALES     | 80000|  2|
+
+#### 7. Find employees with greater salaries than their manager's salary.
+
+Using the employee salary from the previous question, we can 
+find this answer using a sub-query in the where clause. I added
+a sub-query to the select statement to show the manager salary also.
+
+````sql
+SELECT
+	e1.emp_name,
+	e1.department,
+	e1.salary AS employee_salary,
+	(SELECT salary from employee WHERE emp_id = e1.manager_id) AS manager_salary
+FROM
+	employee AS e1
+WHERE
+	e1.salary > (SELECT salary from employee WHERE emp_id = e1.manager_id);
+````
+
+**Results:**
+
+emp_name|department|employee_salary|manager_salary|
+--------|----------|---------------|--------------|
+richard |SALES     |          85000|         80000|
+jennifer|HR        |          71000|         70000|
