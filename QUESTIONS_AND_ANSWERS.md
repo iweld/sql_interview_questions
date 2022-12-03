@@ -6,6 +6,7 @@
 
 These entry level SQL interview questions appear in many interview preperation resources found online.  
 
+<a name="q1"></a>
 #### 1. How do you find duplicates in a table?
 
 To find the duplicates in a table, let's first create a table with some

@@ -1,7 +1,7 @@
 # sql_interview_questions
 A list of the most common entry level SQL interview questions found online and my answers.
 
-1. How to find duplicates in a table?
+1. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#g1">How to find duplicates in a table</a>?
 2. How to delete duplicates from a table?
 3. Difference between union and union all?
 4. Difference between rank,row_number and dense_rank?
