@@ -810,9 +810,9 @@ result_count|
 <a name="q11"></a>
 #### 11. What is the difference between the DELETE, TRUNCATE and DROP statement?
 
-**DELETE** is a DML (Data Manipulation Language) command that is used to delete rows from a table.
-**TRUNCATE** is a DDL (Data Definition Language) command that is used to empty/delete  **ALL** rows from a table but maintains the tables structure.
-**DROP** is a DDL (Data Definition Language) command that is used to completly delete the table and its structure from the schema/database.
+- **DELETE** is a DML (Data Manipulation Language) command that is used to delete rows from a table.
+- **TRUNCATE** is a DDL (Data Definition Language) command that is used to empty/delete  **ALL** rows from a table but maintains the tables structure.
+- **DROP** is a DDL (Data Definition Language) command that is used to completly delete the table and its structure from the schema/database.
 
 ````sql
 DROP TABLE IF EXISTS generic_table;
