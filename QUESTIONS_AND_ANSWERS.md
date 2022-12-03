@@ -81,6 +81,9 @@ name  |count|
 lisa  |    2|
 robert|    3|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q2"></a>
 #### 2. How do you delete duplicates from a table?
 
 We can delete duplicate rows by using a **DELETE USING** statement.
@@ -140,6 +143,9 @@ id|name   |
  7|jane   |
 10|fred   |
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q3"></a>
 #### 3. What is the difference between union and union all?
 
 The union operator combines two or more **SELECT** statements into one result set. 
@@ -214,6 +220,9 @@ brad pitt        |1994|
 **jaime shaker**     |**1998**| 
 george clooney   |2001|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q4"></a>
 #### 4. Difference between rank,row_number and dense_rank?
 
 RANK, DENSE_RANK and ROW_NUMBER are all analytical window functions.
@@ -272,6 +281,10 @@ heather  | 80000|   5|         4|         6|
 ken      | 80000|   5|         4|         7|
 jennifer | 75000|   8|         5|         8|
 
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q5"></a>
 #### 5. Find records in a table which are not present in another table.
 
 This type of a join is called an **anti-join**.  An anti-join does not have it's own syntax.
@@ -337,6 +350,9 @@ id|
  4|
  5|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q6"></a>
  #### 6. Find second highest salary employees in each department.
 
 This question will require us to rank salaries and partition that ranking
@@ -405,6 +421,9 @@ marge   |HR        | 70000|  2|
 robert  |IT        | 75000|  2|
 jane    |SALES     | 80000|  2|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q7"></a>
 #### 7. Find employees with greater salaries than their manager's salary.
 
 Using the employee salary from the previous question, we can 
@@ -430,6 +449,9 @@ emp_name|department|employee_salary|manager_salary|
 richard |SALES     |          85000|         80000|
 jennifer|HR        |          71000|         70000|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q8"></a>
 #### 8. Difference between inner and left join?
 
 An **INNER JOIN** will return only join matching rows between tables.
@@ -492,6 +514,9 @@ id|
  6|
  6|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q9"></a>
  #### 9. Update a table and swap gender values.
 
 This question can be answered using a simple CASE statement in an update query.
@@ -568,7 +593,10 @@ id|name       |gender|
  7|christopher|F     |
  8|maria      |M     |
 
-  #### 10. Number of records in output with different kinds of join.
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q10"></a>
+#### 10. Number of records in output with different kinds of join.
 
 Let's create two new tables to display the different types of joins.
  	
