@@ -435,7 +435,7 @@ jennifer|HR        |          71000|         70000|
 -- 8. Difference between inner and left join?
 
 /*
- 	An inner join will return only join matching rows.
+ 	An inner join will return only join matching rows between tables.
  	A left join will return all items in the left table and matching rows from the
  	right table.
  	
@@ -458,7 +458,7 @@ ON
 
 
 /*
- 	These results exclude id #1 and #5 from the left_table because they do not exists in
+ 	These results exclude id #1 and #5 from the left_table because they do not exist in
  	the right_table.  It will also return a result for EVERY match that occurs in both
  	tables.
  	

@@ -428,3 +428,67 @@ emp_name|department|employee_salary|manager_salary|
 --------|----------|---------------|--------------|
 richard |SALES     |          85000|         80000|
 jennifer|HR        |          71000|         70000|
+
+#### 8. Difference between inner and left join?
+
+An **INNER JOIN** will return only join matching rows between tables.
+A **LEFT JOIN** will return all items in the left table and matching rows from the right table.
+ 	
+Using the left_table and right_table from question #5, we can see how they work.
+
+**INNER JOIN**:
+
+````sql
+SELECT
+	lt.id
+FROM
+	left_table AS lt
+INNER JOIN 
+	right_table AS rt
+ON
+	lt.id = rt.id;
+````
+
+**Results:**
+
+These results exclude id **#1** and **#5** from the left_table because they do not exist in the right_table.  It will also return a result for EVERY match that occurs in both tables.
+
+id|
+--|
+ 2|
+ 2|
+ 3|
+ 6|
+ 6|
+ 6|
+
+ **LEFT JOIN**:
+
+````sql
+SELECT
+	lt.id
+FROM
+	left_table AS lt
+LEFT JOIN 
+	right_table AS rt
+ON
+	lt.id = rt.id;
+````
+
+**Results:**
+
+These results include **ALL** rows from the left_table and only those that match from the right table.
+
+id|
+--|
+ 1|
+ 2|
+ 2|
+ 3|
+ 4|
+ 5|
+ 6|
+ 6|
+ 6|
+
+ 
