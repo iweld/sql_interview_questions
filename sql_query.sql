@@ -534,7 +534,7 @@ VALUES
 	('christopher', 'M'),
 	('maria', 'F');
 
--- Let's take a look at the table
+-- Let's take a look at the table.
 
 SELECT * FROM people;
 
@@ -583,8 +583,7 @@ id|name       |gender|
 -- 10. Number of records in output with different kinds of join.
 
 /*
- 	Using the left_table and right_table from question #5, lets get the count
- 	of the results returned for an...
+ 	Let's create two new tables to display the different types of joins.
  	
  	INNER JOIN
  	LEFT JOIN
@@ -592,6 +591,37 @@ id|name       |gender|
  	FULL OUTER JOIN
  	CROSS JOIN 	
 */
+ 
+DROP TABLE IF EXISTS left_names;
+CREATE TABLE left_names (
+	id text
+);
+
+INSERT INTO left_names
+VALUES 
+	('jaime'),
+	('melissa'),
+	('samuel'),
+	('aaron'),
+	('norma'),
+	(NULL),
+	('christopher');
+
+DROP TABLE IF EXISTS right_names;
+CREATE TABLE right_names (
+	id text
+);
+
+INSERT INTO right_names
+VALUES 
+	('jaime'),
+	('janet'),
+	(NULL),
+	('sonia'),
+	('melissa'),
+	('melissa'),
+	('chris'),
+	('jaime');
 
 -- INNER JOIN
  
@@ -599,28 +629,28 @@ SELECT
 	count(*) result_count
 from
 	(SELECT
-		lt.id
+		l.id
 	FROM
-		left_table AS lt
+		left_names AS l
 	INNER JOIN 
-		right_table AS rt
+		right_names AS r
 	ON
-		lt.id = rt.id) AS tmp
+		l.id = r.id) AS tmp
 
--- Results:
+-- Inner-Query Results:
 		
-id|
---+
- 2|
- 2|
- 3|
- 6|
- 6|
- 6|
+id     |
+-------+
+jaime  |
+jaime  |
+melissa|
+melissa|
+ 
+-- Outer-Query Results:
 		
 result_count|
 ------------+
-           6|
+           4|
            
 -- LEFT JOIN
  
@@ -628,27 +658,29 @@ SELECT
 	count(*) result_count
 from
 	(SELECT
-		lt.id
+		l.id
 	FROM
-		left_table AS lt
+		left_names AS l
 	LEFT JOIN 
-		right_table AS rt
+		right_names AS r
 	ON
-		lt.id = rt.id) AS tmp
+		l.id = r.id) AS tmp
 
--- Results:
-
-id|
---+
- 1|
- 2|
- 2|
- 3|
- 4|
- 5|
- 6|
- 6|
- 6|
+-- Inner-Query Results:
+		
+id         |
+-----------+
+aaron      |
+christopher|
+jaime      |
+jaime      |
+melissa    |
+melissa    |
+norma      |
+samuel     |
+           | <-- NULL VALUE
+ 
+-- Outer-Query Results:
 		
 result_count|
 ------------+
@@ -660,28 +692,34 @@ SELECT
 	count(*) result_count
 from
 	(SELECT
-		rt.id
+		r.id
 	FROM
-		right_table AS rt
-	LEFT JOIN 
-		left_table AS lt
+		left_names AS l
+	RIGHT JOIN 
+		right_names AS r
 	ON
-		lt.id = rt.id) AS tmp
+		l.id = r.id) AS tmp
 
 -- Results:
 		
-id|
---+
- 2|
- 2|
- 3|
- 6|
- 6|
- 6|
+-- Inner-Query Results:
+		
+id     |
+-------+
+chris  |
+jaime  |
+jaime  |
+janet  |
+melissa|
+melissa|
+sonia  |
+       | <-- NULL VALUE
+ 
+-- Outer-Query Results:
 		
 result_count|
 ------------+
-           6|
+           8|
            
 -- FULL OUTER JOIN
  
@@ -689,31 +727,36 @@ SELECT
 	count(*) result_count
 from
 	(SELECT
-		lt.id
+		l.id AS left_table,
+		r.id AS right_table
 	FROM
-		left_table AS lt
+		left_names AS l
 	FULL OUTER JOIN 
-		right_table AS rt
+		right_names AS r
 	ON
-		lt.id = rt.id) AS tmp
+		l.id = r.id) AS tmp
 
 -- Results:
 		
-id|
---+
- 1|
- 2|
- 2|
- 3|
- 4|
- 5|
- 6|
- 6|
- 6|
+left_table |right_table|
+-----------+-----------+
+aaron      |           |
+           |chris      |
+christopher|           |
+jaime      |jaime      |
+jaime      |jaime      |
+           |janet      |
+melissa    |melissa    |
+melissa    |melissa    |
+norma      |           |
+samuel     |           |
+           |           | <-- Left NULL VALUE
+           |sonia      |
+           |           | <-- Right NULL VALUE
 		
 result_count|
 ------------+
-           9|
+          13|
            
 -- CROSS JOIN
  
@@ -721,16 +764,16 @@ SELECT
 	count(*) result_count
 from
 	(SELECT
-		lt.id
+		l.id
 	FROM
-		left_table AS lt
+		left_names AS l
 	CROSS JOIN 
-		right_table AS rt) AS tmp
+		right_names AS r) AS tmp
 
 -- Results:
 
 /*
- 	Every row in the left table will be join to every row in the right table. 	
+ 	Every row in the left table will be joined to every row in the right table. 	
 */
 
 

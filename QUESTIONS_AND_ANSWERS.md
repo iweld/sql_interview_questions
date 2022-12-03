@@ -491,4 +491,288 @@ id|
  6|
  6|
 
- 
+ #### 9. Update a table and swap gender values.
+
+This question can be answered using a simple CASE statement in an update query.
+
+First, lets create a simple table where (**M**)ales have odd id numbers and (**F**)emales have even id numbers.
+
+````sql
+DROP TABLE IF EXISTS people;
+CREATE TABLE people (
+	id serial,
+	name TEXT,
+	gender varchar(1)
+);
+
+INSERT INTO people (name, gender)
+VALUES
+	('mike', 'M'),
+	('sarah', 'F'),
+	('john', 'M'),
+	('lisa', 'F'),
+	('jacob', 'M'),
+	('ellen', 'F'),
+	('christopher', 'M'),
+	('maria', 'F');
+````
+Let's take a look at the table.
+
+````sql
+SELECT * FROM people;
+````
+
+**Results:**
+
+id|name       |gender|
+--|-----------|------|
+ 1|mike       |M     |
+ 2|sarah      |F     |
+ 3|john       |M     |
+ 4|lisa       |F     |
+ 5|jacob      |M     |
+ 6|ellen      |F     |
+ 7|christopher|M     |
+ 8|maria      |F     |
+
+ Now lets **UPDATE** the table and swap the gender values.
+
+````sql
+UPDATE people
+SET gender = 
+	CASE
+		WHEN gender = 'M' THEN 'F'
+		ELSE 'M'
+	END
+WHERE
+	gender IS NOT NULL;
+````
+
+Let's take a look at the table.
+
+````sql
+SELECT * FROM people;
+````
+
+**Results:**
+
+id|name       |gender|
+--|-----------|------|
+ 1|mike       |F     |
+ 2|sarah      |M     |
+ 3|john       |F     |
+ 4|lisa       |M     |
+ 5|jacob      |F     |
+ 6|ellen      |M     |
+ 7|christopher|F     |
+ 8|maria      |M     |
+
+  #### 10. Number of records in output with different kinds of join.
+
+Let's create two new tables to display the different types of joins.
+ 	
+* INNER JOIN
+* LEFT JOIN
+* RIGHT JOIN
+* FULL OUTER JOIN
+* CROSS JOIN 	
+
+````sql
+DROP TABLE IF EXISTS left_names;
+CREATE TABLE left_names (
+	id text
+);
+
+INSERT INTO left_names
+VALUES 
+	('jaime'),
+	('melissa'),
+	('samuel'),
+	('aaron'),
+	('norma'),
+	(NULL),
+	('christopher');
+
+DROP TABLE IF EXISTS right_names;
+CREATE TABLE right_names (
+	id text
+);
+
+INSERT INTO right_names
+VALUES 
+	('jaime'),
+	('janet'),
+	(NULL),
+	('sonia'),
+	('melissa'),
+	('melissa'),
+	('chris'),
+	('jaime');
+````
+**INNER JOIN**
+
+````sql
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		l.id
+	FROM
+		left_names AS l
+	INNER JOIN 
+		right_names AS r
+	ON
+		l.id = r.id) AS tmp
+````
+
+**Inner-Query Results**:
+
+id     |
+-------|
+jaime  |
+jaime  |
+melissa|
+melissa|
+
+**Outer-Query Results**:
+
+result_count|
+------------|
+4|
+
+**LEFT JOIN**
+
+````sql
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		l.id
+	FROM
+		left_names AS l
+	LEFT JOIN 
+		right_names AS r
+	ON
+		l.id = r.id) AS tmp
+````
+
+**Inner-Query Results**:
+
+id         |
+-----------|
+aaron      |
+christopher|
+jaime      |
+jaime      |
+melissa    |
+melissa    |
+norma      |
+samuel     |
+**NULL**|
+
+**Outer-Query Results**:
+
+result_count|
+------------|
+9|
+
+**RIGHT JOIN**
+
+````sql
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		r.id
+	FROM
+		left_names AS l
+	RIGHT JOIN 
+		right_names AS r
+	ON
+		l.id = r.id) AS tmp
+````
+
+**Inner-Query Results**:
+
+id     |
+-------|
+chris  |
+jaime  |
+jaime  |
+janet  |
+melissa|
+melissa|
+sonia  |
+**NULL**|
+
+**Outer-Query Results**:
+
+result_count|
+------------|
+8|
+
+**FULL OUTER JOIN**
+
+````sql
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		l.id AS left_table,
+		r.id AS right_table
+	FROM
+		left_names AS l
+	FULL OUTER JOIN 
+		right_names AS r
+	ON
+		l.id = r.id) AS tmp
+````
+
+**Inner-Query Results**:
+
+left_table |right_table|
+-----------|-----------|
+aaron      |  Null |
+Null |chris      |
+christopher|   Null        |
+jaime      |jaime      |
+jaime      |jaime      |
+|janet      | Null
+melissa    |melissa    |
+melissa    |melissa    |
+norma      |   Null        |
+samuel     |    Null       |
+Null |    Null       | 
+Null |sonia      |
+|    Null       | Null 
+
+**Outer-Query Results**:
+
+result_count|
+------------|
+13|
+
+**CROSS JOIN**
+
+````sql
+SELECT
+	count(*) result_count
+from
+	(SELECT
+		l.id
+	FROM
+		left_names AS l
+	CROSS JOIN 
+		right_names AS r) AS tmp
+````
+
+**Inner-Query Results**:
+
+Every row in the left table will be joined to every row in the right table.
+
+**Outer-Query Results**:
+
+result_count|
+------------|
+56|
+
