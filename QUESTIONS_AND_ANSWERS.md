@@ -805,3 +805,97 @@ result_count|
 ------------|
 56|
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q11"></a>
+#### 11. What is the difference between the DELETE, TRUNCATE and DROP statement?
+
+**DELETE** is a DML (Data Manipulation Language) command that is used to delete rows from a table.
+**TRUNCATE** is a DDL (Data Definition Language) command that is used to empty/delete  **ALL** rows from a table but maintains the tables structure.
+**DROP** is a DDL (Data Definition Language) command that is used to completly delete the table and its structure from the schema/database.
+
+````sql
+DROP TABLE IF EXISTS generic_table;
+CREATE TABLE generic_table (
+	id int
+);
+
+INSERT INTO generic_table
+VALUES 
+	(1),
+	(2),
+	(3),
+	(4),
+	(5),
+	(6);
+````
+
+Lets take a look at our generic table.
+
+````sql
+select * from generic_table;
+````
+**Results**
+
+id|
+--|
+ 1|
+ 2|
+ 3|
+ 4|
+ 5|
+ 6|
+
+Let's **DELETE** all rows with even number ID's.
+
+````sql
+DELETE FROM generic_table
+WHERE (id % 2) = 0;
+````
+
+Let's take a look at our generic table after the **DELETE** statement.
+
+````sql
+select * from generic_table;
+````
+**Results**
+
+id|
+--|
+ 1|
+ 3|
+ 5|
+
+Let's use the **TRUNCATE** statement.
+
+````sql
+TRUNCATE TABLE generic_table;
+````
+Lets take a look at our generic table after the **TRUNCATE** statement.
+
+````sql
+select * from generic_table;
+````
+**Results**
+
+id|
+--|
+
+Let's use the **DROP** statement.
+
+````sql
+DROP TABLE generic_table;
+````
+Lets take a look at our generic table after the **DROP** statement.
+
+````sql
+select * from generic_table;
+````
+**Results**
+
+-- This results in an error. 
+-- **SQL Error: ERROR: relation "generic_table" does not exist**
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q12"></a>

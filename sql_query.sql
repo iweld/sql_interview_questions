@@ -432,7 +432,7 @@ emp_name|department|employee_salary|manager_salary|
 richard |SALES     |          85000|         80000|
 jennifer|HR        |          71000|         70000|
 
--- 8. Difference between inner and left join?
+-- 8. What is the difference between an inner and left join?
 
 /*
  	An inner join will return only join matching rows between tables.
@@ -780,6 +780,96 @@ from
 result_count|
 ------------+
           36|
+          
+-- 11. What is the difference between DELETE, TRUNCATE and DROP statements?
+
+/*
+ 	DELETE is a DML (Data Manipulation Language) command that is used to delete rows from a table.
+	TRUNCATE is a DDL (Data Definition Language) command that is used to empty/delete  **ALL** rows from a table but maintains the tables structure.
+	DROP is a DDL (Data Definition Language) command that is used to completly delete the table and its structure from the schema/database. 	
+*/
+          
+DROP TABLE IF EXISTS generic_table;
+CREATE TABLE generic_table (
+	id int
+);
+
+INSERT INTO generic_table
+VALUES 
+	(1),
+	(2),
+	(3),
+	(4),
+	(5),
+	(6);
+          
+--  Let's take a look at our new table.         
+          
+SELECT * FROM generic_table; 
+
+-- Results:
+
+id|
+--+
+ 1|
+ 2|
+ 3|
+ 4|
+ 5|
+ 6|
+ 
+-- Let's delete all rows with even number ID's.
+          
+DELETE FROM generic_table
+WHERE (id % 2) = 0;
+          
+--  Let's take a look at our table after the DELETE statement.         
+          
+SELECT * FROM generic_table;
+
+-- Results:
+
+id|
+--+
+ 1|
+ 3|
+ 5|
+ 
+ -- Let's use the truncate statement.
+ 
+TRUNCATE TABLE generic_table;
+
+--  Let's take a look at our table after the TRUNCATE statement.         
+          
+SELECT * FROM generic_table;
+ 
+-- Results:
+
+id|
+--+
+
+ -- Let's use the drop statement.
+ 
+DROP TABLE generic_table;
+
+--  Let's take a look at our table after the DROP statement.         
+          
+SELECT * FROM generic_table;
+
+-- This results in an error. 
+-- **SQL Error [42P01]: ERROR: relation "generic_table" does not exist**
 
 
+
+
+
+
+
+
+
+
+
+          
+          
+          
 
