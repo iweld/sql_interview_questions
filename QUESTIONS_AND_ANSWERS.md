@@ -1068,3 +1068,7 @@ student_name|max_score|
 ------------|---------|
 john        |       89|
 mary        |       99|
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q15"></a>

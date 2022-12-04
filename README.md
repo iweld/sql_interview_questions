@@ -14,4 +14,4 @@ A list of the most common entry level SQL interview questions found online and m
 11. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q11">What is the difference between the DELETE, TRUNCATE and DROP statements</a>?
 12. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q12">What is the difference between the NOW() and CURRENT_DATE functions</a>?
 13. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q13">What is the difference between the ‘IN’ and ‘BETWEEN’ condition operators</a>?
-14. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q13">What is the difference between the WHERE and the HAVING clause</a>?
+14. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q14">What is the difference between the WHERE and the HAVING clause</a>?
