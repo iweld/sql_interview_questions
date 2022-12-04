@@ -986,4 +986,85 @@ brenda      |   90|
 
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
-<a name="q13"></a>
+<a name="q14"></a>
+#### 14. What is the difference between the WHERE and the HAVING clause?
+
+Both of these clauses are used for filtering results, but this question is easier to understand if you understand that there is a difference between '**The order of execution**' and '**The order of writing**' an SQL query.
+
+The order of execution is as follows:
+
+	1. FROM/JOIN
+ 	2. WHERE
+ 	3. GROUP BY
+ 	4. HAVING
+ 	5. SELECT	
+ 	6. Distinct
+ 	7. ORDER BY
+ 	8. LIMIT / OFFSET
+
+- **WHERE** is used to filter individual rows BEFORE groupings are made.  Which is why aggregate functions CANNOT be used in a where clause
+ 	because the GROUP does NOT exist when the WHERE clause if filtering.
+- **HAVING** is used for filtering values from a GROUP which would allow you to use aggregate functions within its conditions.
+
+Let's create create a table where we can illustrate the differences.
+
+````sql
+DROP TABLE IF EXISTS avg_student_grades;
+CREATE TABLE avg_student_grades (
+	student_name TEXT,
+	score int
+);
+
+INSERT INTO avg_student_grades (student_name, score)
+VALUES
+	('john', 89),
+	('mary', 99),
+	('jacob', 79),
+	('john', 83),
+	('mary', 92),
+	('jacob', 75);
+````
+
+Let's use a **WHERE** clause to find all test scores greater than 80.
+
+````sql
+SELECT
+	student_name,
+	score
+FROM
+	avg_student_grades
+WHERE
+	score > 80
+ORDER BY
+	student_name;
+````
+
+**Results**
+
+student_name|score|
+------------|-----|
+john        |   89|
+john        |   83|
+mary        |   99|
+mary        |   92|
+
+Let's use a **HAVING** clause to find the MAX() score in a group for test scores greater than 80.
+
+````sql
+SELECT
+	student_name,
+	max(score)AS max_score
+FROM
+	avg_student_grades
+GROUP BY
+	student_name
+HAVING 
+	max(score) > 80;
+````
+
+**Results**
+
+student_name|max_score|
+------------|---------|
+john        |       89|
+mary        |       99|
