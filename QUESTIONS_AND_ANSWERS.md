@@ -919,7 +919,7 @@ now                          |current_date|
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q13"></a>
-#### 13. What is the main difference between the ‘IN’ and ‘BETWEEN’ condition operators?
+#### 13. What is the difference between the ‘IN’ and ‘BETWEEN’ condition operators?
 
 - **IN** is used to check for values contained in a specific set of values.
 - **BETWEEN** is used to return rows within a range of values.
