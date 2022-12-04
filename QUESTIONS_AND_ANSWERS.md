@@ -899,3 +899,19 @@ select * from generic_table;
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q12"></a>
+#### 12. What is the difference between the NOW() and CURRENT_DATE functions?
+
+- **NOW()** returns the timestamp (YYYY-MM-DD HH:MM:SS) of when the function was executed.
+- **CURRENT_DATE** returns the date of the current day (YYYY-MM-DD).
+
+````sql
+SELECT 
+	now(),
+	current_date;
+````
+
+**Results**
+
+now                          |current_date|
+-----------------------------|------------|
+2022-12-04 07:19:52.891 -0600|  2022-12-04|

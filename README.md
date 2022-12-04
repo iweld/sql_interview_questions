@@ -11,4 +11,5 @@ A list of the most common entry level SQL interview questions found online and m
 8. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q8">What is the difference between an inner and left join</a>?
 9. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q9">Update a table and swap gender values</a>.
 10. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q10">Number of records in output with different kinds of join</a>.
-10. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q11">What is the difference between the DELETE, TRUNCATE and DROP statements</a>?
+11. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q11">What is the difference between the DELETE, TRUNCATE and DROP statements</a>?
+12. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q12">What is the difference between the NOW() and CURRENT_DATE functions?</a>?

@@ -859,6 +859,23 @@ SELECT * FROM generic_table;
 -- This results in an error. 
 -- **SQL Error [42P01]: ERROR: relation "generic_table" does not exist**
 
+-- 12. What is the difference between the NOW() and CURRENT_DATE functions?
+
+/*
+ 	NOW() returns the timestamp (YYYY-MM-DD HH:MM:SS) of when the function was executed.
+	CURRENT_DATE returns the date of the current day (YYYY-MM-DD).	
+*/
+
+SELECT 
+	now(),
+	current_date;
+
+-- Results:
+
+now                          |current_date|
+-----------------------------+------------+
+2022-12-04 07:19:52.891 -0600|  2022-12-04|
+
 
 
 
