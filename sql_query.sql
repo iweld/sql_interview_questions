@@ -876,7 +876,67 @@ now                          |current_date|
 -----------------------------+------------+
 2022-12-04 07:19:52.891 -0600|  2022-12-04|
 
+-- 13. What is the main difference between the ‘IN’ and ‘BETWEEN’ condition operators?
 
+/*
+ 	IN is used to check for values contained in a specific set of values.
+	BETWEEN is used to return rows within a range of values.	
+*/
+
+-- Let's create a table
+
+DROP TABLE IF EXISTS student_grades;
+CREATE TABLE student_grades (
+	student_name TEXT,
+	score int
+);
+
+INSERT INTO student_grades (student_name, score)
+VALUES
+	('john', 95),
+	('mary', 80),
+	('jacob', 79),
+	('calvin', 98),
+	('jennifer', 100),
+	('chris', 89),
+	('brenda', 90),
+	('michael', 71),
+	('xavier', 69);
+
+-- Let's use the IN operator to returns students who missed the next letter grade by one point.
+
+SELECT
+	student_name,
+	score
+FROM 
+	student_grades
+WHERE score IN (69, 79, 89);
+
+-- Results:
+
+student_name|score|
+------------+-----+
+jacob       |   79|
+chris       |   89|
+xavier      |   69|
+
+
+-- Let's use the BETWEEN operator to returns students who have a score between 85 and 95.
+
+SELECT
+	student_name,
+	score
+FROM 
+	student_grades
+WHERE score BETWEEN 85 AND 95;
+
+-- Results:
+
+student_name|score|
+------------+-----+
+john        |   95|
+chris       |   89|
+brenda      |   90|
 
 
 
