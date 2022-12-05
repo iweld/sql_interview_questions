@@ -1072,3 +1072,58 @@ mary        |       99|
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q15"></a>
+#### 15. From a table of names, write a query that only returns EVEN number rows.
+
+For this query we will use the **ROW_NUMBER()** window function in a CTE (Common Table Expression) and the **MODULO** operator.  For easier tracking, I will use common MALE names for odd number entries and FEMALE names for the even number entries.
+
+````sql
+DROP TABLE IF EXISTS common_names;
+CREATE TABLE common_names (
+	user_name TEXT
+);
+
+INSERT INTO common_names (user_name)
+VALUES
+	('aaron'),
+	('mary'),
+	('luke'),
+	('jennifer'),
+	('mark'),
+	('laura'),
+	('john'),
+	('olivia');
+````
+We will use a CTE to give each entry a unique row number.
+
+````sql
+WITH get_row_number as (
+	SELECT
+		ROW_NUMBER() OVER () AS rn,
+		user_name
+	FROM
+		common_names
+)
+````
+Now let's select only the names where the newly assigned row number is EVEN.
+
+````sql
+SELECT
+	rn as even_id,
+	user_name
+FROM
+	get_row_number
+WHERE (rn % 2) = 0;
+````
+
+**Results**
+
+even_id|user_name|
+-------|---------|
+2|mary     |
+4|jennifer |
+6|laura    |
+8|olivia   |
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q16"></a>

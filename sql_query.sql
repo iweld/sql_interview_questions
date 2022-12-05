@@ -995,11 +995,12 @@ ORDER BY
 
 student_name|score|
 ------------+-----+
+john        |   89|
 john        |   83|
 mary        |   99|
 mary        |   92|
 
--- Let's use a HAVING clause to find the MAX() in a group for test scores greater than 80.
+-- Let's use a HAVING clause to find the MAX() test score in a group for test scores greater than 80.
 
 SELECT
 	student_name,
@@ -1009,14 +1010,81 @@ FROM
 GROUP BY
 	student_name
 HAVING 
-	max(score) > 80;
+	max(score) > 80
+ORDER BY
+	student_name;
 
 -- Results:
 
 student_name|max_score|
 ------------+---------+
+john        |       89|
 mary        |       99|
-john        |       83|
+
+-- 15. From a table of names, write a query that only returns EVEN number rows.
+
+/*
+ 	For this query we will use the ROW_NUMBER() window function in a CTE (Common Table Expression)
+ 	and the modulo operator.  For easier tracking, I will use common MALE names for odd number entries and
+ 	FEMALE names for the even number entries.
+ 		
+*/
+
+DROP TABLE IF EXISTS common_names;
+CREATE TABLE common_names (
+	user_name TEXT
+);
+
+INSERT INTO common_names (user_name)
+VALUES
+	('aaron'),
+	('mary'),
+	('luke'),
+	('jennifer'),
+	('mark'),
+	('laura'),
+	('john'),
+	('olivia');
+
+-- We will use a CTE to give each entry a unique row number.
+
+WITH get_row_number as (
+	SELECT
+		ROW_NUMBER() OVER () AS rn,
+		user_name
+	FROM
+		common_names
+)
+-- Now let's select only the names where the newly assigned row number is EVEN.
+SELECT
+	user_name
+FROM
+	get_row_number
+WHERE (rn % 2) = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
