@@ -1,5 +1,5 @@
 # sql_interview_questions
-A list of the most common entry level SQL interview questions found online and my answers.
+A list of the most common entry level SQL technical interview questions found online and my answers.
 
 1. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q1">How do you find duplicates in a table</a>?
 2. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q2">How do you delete duplicates from a table</a>?
