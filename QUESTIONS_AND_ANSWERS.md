@@ -1193,7 +1193,7 @@ DROP TABLE original_table;
 <a name="q17"></a>
 #### 17. In string pattern matching, what is the difference between LIKE and ILIKE?
 
-LIKE and ILIKE are both used in charater-based pattern matching.
+LIKE and ILIKE are both used in pattern matching.
  	
 - **LIKE** is used for case-sensitive pattern matching.
 - **ILIKE** is used for case-insensitive pattern matching.
