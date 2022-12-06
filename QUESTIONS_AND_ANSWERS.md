@@ -1127,3 +1127,67 @@ even_id|user_name|
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q16"></a>
+#### 16. How can we copy the contents of one table to a new table?
+
+Let's create a new table.
+
+````sql
+DROP TABLE IF EXISTS original_table;
+CREATE TABLE original_table (
+	user_id serial,
+	user_name TEXT,
+	user_age smallint
+);
+
+INSERT INTO original_table (user_name, user_age)
+VALUES
+	('william', 34),
+	('marjorie', 22),
+	('larence', 55),
+	('maria', 19),
+	('moses', 40),
+	('britney', 39),
+	('jake', 27),
+	('barbara', 42);
+````
+First we have to create a new table with the same structure as the original table and no data.
+
+````sql
+DROP TABLE IF EXISTS copied_table;
+CREATE TABLE copied_table AS 
+TABLE original_table
+WITH NO DATA;
+````
+This statement creates an empty table with the same structure as the original table.  Now we can **INSERT** (copy) the data from the original table.
+
+````sql
+INSERT INTO copied_table
+(SELECT * FROM original_table);
+````
+We can take a look at our copied table.
+
+````sql
+SELECT * FROM copied_table;
+````
+**Results**
+
+user_id|user_name|user_age|
+-------|---------|--------|
+1|william  |      34|
+2|marjorie |      22|
+3|larence  |      55|
+4|maria    |      19|
+5|moses    |      40|
+6|britney  |      39|
+7|jake     |      27|
+8|barbara  |      42|
+
+Let us now **DROP** the original table.
+
+````sql
+DROP TABLE original_table;
+````
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q17"></a>

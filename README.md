@@ -1,6 +1,8 @@
 # sql_interview_questions
 A list of the most common entry level SQL technical interview questions found online and my answers.
 
+All solutions were coded using PostgreSQL.
+
 1. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q1">How do you find duplicates in a table</a>?
 2. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q2">How do you delete duplicates from a table</a>?
 3. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q3">What is the difference between union and union all</a>?
@@ -16,3 +18,4 @@ A list of the most common entry level SQL technical interview questions found on
 13. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q13">What is the difference between the ‘IN’ and ‘BETWEEN’ condition operators</a>?
 14. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q14">What is the difference between the WHERE and the HAVING clause</a>?
 15. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q15">From a table of names, write a query that only returns EVEN number rows.</a>.
+16. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q16">How can we copy the contents of one table to a new table?</a>?
