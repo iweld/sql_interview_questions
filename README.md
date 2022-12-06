@@ -18,4 +18,5 @@ All solutions were coded using PostgreSQL.
 13. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q13">What is the difference between the ‘IN’ and ‘BETWEEN’ condition operators</a>?
 14. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q14">What is the difference between the WHERE and the HAVING clause</a>?
 15. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q15">From a table of names, write a query that only returns EVEN number rows.</a>.
-16. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q16">How can we copy the contents of one table to a new table?</a>?
+16. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q16">How can we copy the contents of one table to a new table</a>?
+17. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q17">In string pattern matching, what is the difference between LIKE and ILIKE</a>?

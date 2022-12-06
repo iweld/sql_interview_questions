@@ -1119,13 +1119,62 @@ user_id|user_name|user_age|
 
 DROP TABLE original_table;
 
+-- 17. In string pattern matching, what is the difference between LIKE and ILIKE?
 
+/*
+ 	LIKE and ILIKE are both used in charater-based pattern matching.
+ 	
+ 	LIKE is used for case-sensitive pattern matching.
+ 	ILIKE is used for case-insensitive pattern matching.
+ 		
+*/
 
+-- Let's create a table with case-sensitive data.
 
+DROP TABLE IF EXISTs case_sensitivity;
+CREATE TABLE case_sensitivity (
+	crazy_case TEXT 
+);
 
+INSERT INTO case_sensitivity (crazy_case)
+VALUES
+	('jaime'),
+	('JAIME'),
+	('jAImE');
 
+-- Let's see what LIKE pattern matching returns when using upper-case characters.
 
+SELECT
+	*
+FROM case_sensitivity
+WHERE crazy_case LIKE '%JAIME%';
 
+-- Results:
+
+crazy_case|
+----------+
+JAIME     |
+
+-- Now let's see what ILIKE pattern matching returns.
+
+SELECT
+	*
+FROM case_sensitivity
+WHERE crazy_case ILIKE '%JAIME%';
+
+-- Results:
+
+crazy_case|
+----------+
+jaime     |
+JAIME     |
+jAImE     |
+
+/*
+ 	Make note that ILIKE CANNOT use an index created on a case-sensitive column
+ 	for optimization.
+ 		
+*/
 
 
 
