@@ -1292,7 +1292,46 @@ median|
 ------+
   13.0|
 
+-- 20. Display two different methods to concatnate strings in PostgreSQL.
+  
+/*
 
+	In PostgreSQL we can concatnate (join) strings using the CONCAT() function or using || 
+	as an alternative method. 
+
+*/
+
+-- Let's create a table with two columns.  One for the users first name and one for their surname/last name.  
+  
+DROP TABLE IF EXISTS full_names;
+CREATE TABLE full_names (
+	first_name TEXT,
+	last_name TEXT
+);
+
+INSERT INTO full_names (first_name, last_name)
+VALUES
+	('jaime', 'shaker'),
+	('clint', 'eastwood'),
+	('martha', 'stewart'),
+	('captain', 'kangaroo');
+
+-- Now we can use a select statement to concatnate our columns.
+
+SELECT
+	concat(first_name, ' ', last_name) AS fullname_concat_function,
+	first_name || ' ' || last_name AS fullname_bar_alternative
+FROM
+	full_names;
+
+-- Results:
+
+fullname_concat_function|fullname_bar_alternative|
+------------------------+------------------------+
+jaime shaker            |jaime shaker            |
+clint eastwood          |clint eastwood          |
+martha stewart          |martha stewart          |
+captain kangaroo        |captain kangaroo        |
 
 
 
