@@ -1341,3 +1341,19 @@ Sophia      |            6|sophia    |SOPHIA    |aihpoS       |Sophi*    |Sop   
  <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q19"></a>
+#### 19. How can you calculate the MEDIAN of a numerical field?
+
+Although PostgreSQL does not have a function to calculate the median of a column, it does provide a column that can find the 50th percentile.  Finding the percentile can be done using the **PERCENTILE_CONT()** function.
+	
+For simplicity, let's find the **MEDIAN** using a series of numbers from 1-25.
+
+````sql
+SELECT 
+ PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY generate_series) AS median
+FROM generate_series(1, 25);
+````
+**Results** 
+
+median|
+------|
+  13.0|
