@@ -1122,7 +1122,7 @@ DROP TABLE original_table;
 -- 17. In string pattern matching, what is the difference between LIKE and ILIKE?
 
 /*
- 	LIKE and ILIKE are both used in charater-based pattern matching.
+ 	LIKE and ILIKE are both used in pattern matching.
  	
  	LIKE is used for case-sensitive pattern matching.
  	ILIKE is used for case-insensitive pattern matching.
@@ -1176,12 +1176,98 @@ jAImE     |
  		
 */
 
+-- 18. What are Aggregate and Scalar functions in an RDBMS and can you provide an example of their use?
 
+/*
 
+	Aggregate functions are calculations that are applied to a set or group of values in a column that returns a single, summarized value.  
+	Some of the most common functions include:
+	
+	- COUNT()
+	- AVG()
+	- MIN()
+	- MAX()
+	- SUM()
+	
+	Scalar functions are calculations that are applied to a value provided by user input and return a single value.  
+	Some Scalar functions such as NOW() do not require user input. String functions can provide great examples 
+	of Scalar functions such as:
+	
+	- LENGTH()
+	- LOWER()
+	- UPPER()
+	- REVERSE()
+	- REPLACE()
+	- SUBSTRING()
 
+*/
 
+DROP TABLE IF EXISTS function_examples;
+CREATE TABLE function_examples (
+	student_name TEXT,
+	score int
+);
 
+INSERT INTO function_examples (student_name, score)
+VALUES
+	('Jaime', 94),
+	('Sophia', 95),
+	('William', 79),
+	('Jaime', 83),
+	('Sophia', 88),
+	('William', 68),
+	('Jaime', 70),
+	('Sophia', 85),
+	('William', 86),
+	('Jaime', 77),
+	('Sophia', 81),
+	('William', 80);
 
+-- Let's return values using the Aggregate functions. Order from highest total_score to lowest.
+-- Round the AVG to two decimal points.
+
+SELECT
+	student_name,
+	COUNT(*) AS name_count,
+	round(AVG(score), 2) AS avg_score,
+	MIN(score) AS min_score,
+	MAX(score) AS max_score,
+	SUM(score) AS total_score
+FROM
+	function_examples
+GROUP BY
+	student_name
+ORDER BY
+	total_score DESC;
+
+-- Results:
+
+student_name|name_count|avg_score|min_score|max_score|total_score|
+------------+----------+---------+---------+---------+-----------+
+Sophia      |         4|    87.25|       81|       95|        349|
+Jaime       |         4|    81.00|       70|       94|        324|
+William     |         4|    78.25|       68|       86|        313|
+	
+-- Let's return values using the Scalar functions.
+
+SELECT
+	DISTINCT student_name,
+	LENGTH(student_name) AS string_length,
+	LOWER(student_name) AS lower_case,
+	UPPER(student_name) AS upper_case,
+	REVERSE(student_name) AS reversed_name,
+	REPLACE(student_name, 'a', '*') AS replaced_A,
+	SUBSTRING(student_name, 1, 3) AS first_three_chars
+FROM
+	function_examples;
+
+-- Results:
+
+student_name|string_length|lower_case|upper_case|reversed_name|replaced_a|first_three_chars|
+------------+-------------+----------+----------+-------------+----------+-----------------+
+Jaime       |            5|jaime     |JAIME     |emiaJ        |J*ime     |Jai              |
+William     |            7|william   |WILLIAM   |mailliW      |Willi*m   |Wil              |
+Sophia      |            6|sophia    |SOPHIA    |aihpoS       |Sophi*    |Sop              |
 
 
 
