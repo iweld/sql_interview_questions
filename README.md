@@ -21,3 +21,4 @@ All solutions were coded using PostgreSQL.
 16. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q16">How can we copy the contents of one table to a new table</a>?
 17. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q17">In string pattern matching, what is the difference between LIKE and ILIKE</a>?
 18. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q18">What are Aggregate and Scalar functions in an RDBMS and can you provide an example of their use</a>?
+19. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q19">How can you calculate the MEDIAN of a numerical field</a>?
