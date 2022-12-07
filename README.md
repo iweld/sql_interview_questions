@@ -17,9 +17,9 @@ All solutions were coded using PostgreSQL.
 12. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q12">What is the difference between the NOW() and CURRENT_DATE functions</a>?
 13. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q13">What is the difference between the ‘IN’ and ‘BETWEEN’ condition operators</a>?
 14. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q14">What is the difference between the WHERE and the HAVING clause</a>?
-15. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q15">From a table of names, write a query that only returns EVEN number rows.</a>.
+15. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q15">From a table of names, write a query that only returns EVEN number rows</a>.
 16. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q16">How can we copy the contents of one table to a new table</a>?
 17. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q17">In string pattern matching, what is the difference between LIKE and ILIKE</a>?
 18. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q18">What are Aggregate and Scalar functions in an RDBMS and can you provide an example of their use</a>?
 19. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q19">How can you calculate the MEDIAN of a numerical field</a>?
-20. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q20">Display two different methods to concatnate strings in PostgreSQL.</a>.
+20. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q20">Display two different methods to concatnate strings in PostgreSQL</a>.
