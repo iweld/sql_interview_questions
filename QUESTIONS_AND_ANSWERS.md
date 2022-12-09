@@ -1401,4 +1401,29 @@ clint eastwood          |clint eastwood          |
 martha stewart          |martha stewart          |
 captain kangaroo        |captain kangaroo        |
 
-<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+  <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q21"></a>
+#### 21. How can we get the Year (month, day hour, etc...) from a timestamp? 
+
+The **EXTRACT()** function allows us to 'extract' which specific field to return from a timestamp or an interval.
+
+The **EXTRACT()** function returns a double precision value so I am casting to a numeric
+type for readability.
+
+For this example I am using the **NOW()** function to return a timestamp.
+
+````sql
+SELECT 
+	now(),
+	EXTRACT(century FROM now())::numeric AS century,
+	EXTRACT(decade FROM now())::numeric AS decade,
+	EXTRACT(YEAR FROM now())::numeric AS year,
+	EXTRACT(MONTH FROM now())::numeric AS month,
+	EXTRACT(DAY FROM now())::numeric AS day,
+	EXTRACT(TIMEZONE_HOUR FROM now())::numeric AS timezone
+````
+
+moment_in_time               |century|decade|year|month|day|timezone|
+-----------------------------|-------|------|----|-----|---|--------|
+2022-12-08 19:50:24.508 -0600|     21|   202|2022|   12|  8|      -6|

@@ -1333,13 +1333,29 @@ clint eastwood          |clint eastwood          |
 martha stewart          |martha stewart          |
 captain kangaroo        |captain kangaroo        |
 
+-- 21.  How can we get the Year (month, day hour, etc...) from a timestamp? 
 
+/*
 
+	The EXTRACT() function allows us to 'extract' which specific field to return from a
+	timestamp or an interval.
 
+*/
 
+SELECT 
+	now() AS moment_in_time,
+	EXTRACT(century FROM now())::numeric AS century,
+	EXTRACT(decade FROM now())::numeric AS decade,
+	EXTRACT(YEAR FROM now())::numeric AS year,
+	EXTRACT(MONTH FROM now())::numeric AS month,
+	EXTRACT(DAY FROM now())::numeric AS day,
+	EXTRACT(TIMEZONE_HOUR FROM now())::numeric AS timezone;
 
+-- Results:
 
-          
+moment_in_time               |century|decade|year|month|day|timezone|
+-----------------------------+-------+------+----+-----+---+--------+
+2022-12-08 19:50:24.508 -0600|     21|   202|2022|   12|  8|      -6|
           
           
 
