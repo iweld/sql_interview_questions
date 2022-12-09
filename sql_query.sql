@@ -1357,5 +1357,40 @@ moment_in_time               |century|decade|year|month|day|timezone|
 -----------------------------+-------+------+----+-----+---+--------+
 2022-12-08 19:50:24.508 -0600|     21|   202|2022|   12|  8|      -6|
           
-          
+-- 22.  Produce a query that only returns 50% of the records.
+
+/*
+
+	This problem can be solved using a sub-query in the WHERE statement.
+	
+	Lets use a CTE with the GENERATE_SERIES() function to create 10 rows to query.
+
+*/
+
+WITH get_half AS (
+	SELECT
+		*
+	FROM generate_series(1, 10)
+)
+SELECT
+	generate_series AS top_half
+FROM
+	get_half
+WHERE
+	generate_series <= (SELECT count(*)/2 FROM get_half);
+
+-- Results:
+
+top_half|
+--------+
+       1|
+       2|
+       3|
+       4|
+       5|
+
+
+
+
+
 
