@@ -1589,7 +1589,7 @@ SELECT COALESCE(NULL, '', 'jaime', 'shaker');
 
 coalesce|
 --------|
-|
+ |
 
 This results in an empty value because empty (' ') and null are not the same.  The **NULLIF()** function returns NULL if argument #1 is equal to Argument #2, else it returns Argument #1.
 
@@ -1613,7 +1613,7 @@ SELECT NULLIF('shaker', 'shaker');
 
 nullif|
 ------|
-|
+ |
 
 We can display how they can work together with a simple table.
 
