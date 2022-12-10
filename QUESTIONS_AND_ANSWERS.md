@@ -1558,3 +1558,21 @@ jaime    |123-456-7890;555-555-5555|
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q24"></a>
+#### 24. What is the use of the COALESCE() function?
+
+The **COALESCE()** functions has the same functionality as IFNULL in standard SQL.  It is basically a function that accepts an unlimited number of arguments and returns the first argument that is NOT null.
+	
+Once it has found the first non-null argument, all other arguments are NOT evaluated.  It will return a null value if all arguments are null.
+
+````sql
+SELECT COALESCE(NULL, 'jaime', 'shaker');
+````
+
+**Results** 
+
+coalesce|
+--------|
+jaime   |
+
+
+
