@@ -835,7 +835,7 @@ Lets take a look at our generic table.
 ````sql
 select * from generic_table;
 ````
-**Results**
+**Results**:
 
 id|
 --|
@@ -858,7 +858,7 @@ Let's take a look at our generic table after the **DELETE** statement.
 ````sql
 select * from generic_table;
 ````
-**Results**
+**Results**:
 
 id|
 --|
@@ -876,7 +876,7 @@ Lets take a look at our generic table after the **TRUNCATE** statement.
 ````sql
 select * from generic_table;
 ````
-**Results**
+**Results**:
 
 id|
 --|
@@ -891,7 +891,7 @@ Lets take a look at our generic table after the **DROP** statement.
 ````sql
 select * from generic_table;
 ````
-**Results**
+**Results**:
 
 This results in an error. 
  ❗ **SQL Error: ERROR: relation "generic_table" does not exist** ❗
@@ -910,7 +910,7 @@ SELECT
 	current_date;
 ````
 
-**Results**
+**Results**:
 
 now                          |current_date|
 -----------------------------|------------|
@@ -957,7 +957,7 @@ FROM
 WHERE score IN (69, 79, 89);
 ````
 
-**Results**
+**Results**:
 
 student_name|score|
 ------------|-----|
@@ -976,7 +976,7 @@ FROM
 WHERE score BETWEEN 85 AND 95;
 ````
 
-**Results**
+**Results**:
 
 student_name|score|
 ------------|-----|
@@ -1039,7 +1039,7 @@ ORDER BY
 	student_name;
 ````
 
-**Results**
+**Results**:
 
 student_name|score|
 ------------|-----|
@@ -1062,7 +1062,7 @@ HAVING
 	max(score) > 80;
 ````
 
-**Results**
+**Results**:
 
 student_name|max_score|
 ------------|---------|
@@ -1115,7 +1115,7 @@ FROM
 WHERE (rn % 2) = 0;
 ````
 
-**Results**
+**Results**:
 
 even_id|user_name|
 -------|---------|
@@ -1169,7 +1169,7 @@ We can take a look at our copied table.
 ````sql
 SELECT * FROM copied_table;
 ````
-**Results**
+**Results**:
 
 user_id|user_name|user_age|
 -------|---------|--------|
@@ -1220,7 +1220,7 @@ FROM case_sensitivity
 WHERE crazy_case LIKE '%JAIME%';
 ````
 
-**Results** (Exact match)
+**Results**: (Exact match)
 
 crazy_case|
 ----------|
@@ -1235,7 +1235,7 @@ FROM case_sensitivity
 WHERE crazy_case ILIKE '%JAIME%';
 ````
 
-**Results**
+**Results**:
 
 crazy_case|
 ----------|
@@ -1307,7 +1307,7 @@ ORDER BY
 	total_score DESC;
 ````
 
-**Results** 
+**Results**: 
 
 student_name|name_count|avg_score|min_score|max_score|total_score|
 ------------|----------|---------|---------|---------|-----------|
@@ -1330,7 +1330,7 @@ FROM
 	function_examples;
 ````
 
-**Results** 
+**Results**: 
 
 student_name|string_length|lower_case|upper_case|reversed_name|replaced_a|first_three_chars|
 ------------|-------------|----------|----------|-------------|----------|-----------------|
@@ -1352,7 +1352,7 @@ SELECT
  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY generate_series) AS median
 FROM generate_series(1, 25);
 ````
-**Results** 
+**Results**: 
 
 median|
 ------|
@@ -1392,7 +1392,7 @@ FROM
 	full_names;
 ````
 
-**Results** 
+**Results**: 
 
 fullname_concat_function|fullname_bar_alternative|
 ------------------------|------------------------|
@@ -1424,7 +1424,7 @@ SELECT
 	EXTRACT(TIMEZONE_HOUR FROM now())::numeric AS timezone;
 ````
 
-**Results** 
+**Results**: 
 
 moment_in_time               |century|decade|year|month|day|timezone|
 -----------------------------|-------|------|----|-----|---|--------|
@@ -1453,7 +1453,7 @@ WHERE
 	generate_series <= (SELECT count(*)/2 FROM get_half);
 ````
 
-**Results** 
+**Results**: 
 
 top_half|
 --------|
@@ -1493,7 +1493,7 @@ SELECT * FROM user_phone_number;
 ````
 We now have a table with unique user_names and a phone number.
 
-**Results** 
+**Results**: 
 
 user_name|user_phone  |
 ---------|------------|
@@ -1526,7 +1526,7 @@ DO
 SELECT * FROM user_phone_number;
 ````
 
-**Results**
+**Results**:
 
 user_name|user_phone  |
 ---------|------------|
@@ -1547,7 +1547,7 @@ DO
 SELECT * FROM user_phone_number;
 ````
 
-**Results**
+**Results**:
 
 user_name|user_phone               |
 ---------|-------------------------|
@@ -1568,7 +1568,7 @@ Once it has found the first non-null argument, all other arguments are NOT evalu
 SELECT COALESCE(NULL, 'jaime', 'shaker');
 ````
 
-**Results** 
+**Results**: 
 
 coalesce|
 --------|
@@ -1585,7 +1585,7 @@ No.  The **COALSCE()** function can accept an unlimited number of arguments and 
 SELECT COALESCE(NULL, '', 'jaime', 'shaker');
 ````
 
-**Results** 
+**Results**: 
 
 coalesce|
 --------|
@@ -1597,7 +1597,7 @@ This results in an empty value because empty (' ') and null are not the same.  T
 SELECT NULLIF('jaime', 'shaker');
 ````
 
-**Results** 
+**Results**: 
 
 nullif|
 ------|
@@ -1609,7 +1609,7 @@ However, if the arguments equal each other...
 SELECT NULLIF('shaker', 'shaker');
 ````
 
-**Results**  (Returns **NULL**)
+**Results**:  (Returns **NULL**)
 
 nullif|
 ------|
@@ -1636,7 +1636,7 @@ VALUES
 SELECT * FROM convert_nulls;
 ````
 
-**Results**
+**Results**:
 
 user_name|city       |state|
 ---------|-----------|-----|
@@ -1659,7 +1659,7 @@ FROM
 	convert_nulls;
 ````
 
-**Results**
+**Results**:
 
 user_name|city       |state|
 ---------|-----------|-----|
