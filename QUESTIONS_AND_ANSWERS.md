@@ -1574,5 +1574,97 @@ coalesce|
 --------|
 jaime   |
 
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
+
+<a name="q25"></a>
+#### 25.  Is the COALSCE() function the same are the NULLIF() function?
+
+No.  The **COALSCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a '' to our previous query to display what **COALESCE()** returns.
+
+````sql
+SELECT COALESCE(NULL, '', 'jaime', 'shaker');
+````
+
+**Results** 
+
+coalesce|
+--------|
+|
+
+This results in an empty value because empty (' ') and null are not the same.  The **NULLIF()** function returns NULL if argument #1 is equal to Argument #2, else it returns Argument #1.
+
+````sql
+SELECT NULLIF('jaime', 'shaker');
+````
+
+**Results** 
+
+nullif|
+------|
+jaime |
+
+However, if the arguments equal each other...
+
+````sql
+SELECT NULLIF('shaker', 'shaker');
+````
+
+**Results**  (Returns **NULL**)
+
+nullif|
+------|
+|
+
+We can display how they can work together with a simple table.
+
+````sql
+DROP TABLE IF EXISTS convert_nulls;
+
+CREATE TABLE convert_nulls (
+	user_name TEXT,
+	city TEXT,
+	state TEXT
+);
 
 
+INSERT INTO convert_nulls (user_name, city, state)
+VALUES	
+	('jaime', 'orland park', 'IL'),
+	('pat', '', 'IL'),
+	('chris', NULL, 'IL');
+
+SELECT * FROM convert_nulls;
+````
+
+**Results**
+
+user_name|city       |state|
+---------|-----------|-----|
+jaime    |orland park|IL   |
+pat      |           |IL   |
+chris    |           |IL   |
+
+Let's use the **NULLIF()** function to convert empty (' ') values to NULL and the **COALESCE()** function to convert NULLs to 'unknown'.
+
+````sql
+SELECT
+	user_name,
+/*
+	1. NULLIF converts all '' to null because they match.
+	2. COALESCE returns the first non-null argument which in this case is 'unknown if the city value is null. 
+*/
+	COALESCE(NULLIF(city, ''), 'unknown') AS city,
+	state
+FROM
+	convert_nulls;
+````
+
+**Results**
+
+user_name|city       |state|
+---------|-----------|-----|
+jaime    |orland park|IL   |
+pat      |unknown    |IL   |
+chris    |unknown    |IL   |
+
+<a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>

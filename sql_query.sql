@@ -1503,7 +1503,8 @@ jaime   |
 /*
 
 	No.  The COALSCE() function can accept an unlimited number of arguments and returns the first non-null
-	argument.  Although You can mimic a NULLIF function, they are different.  Let's add a '' to our previous query.
+	argument.  Although You can mimic a NULLIF function, they are different.  Let's add a '' to our previous query
+	to display what COALESCE() returns.
 
 */
 
@@ -1542,7 +1543,7 @@ nullif|
 
 /*
 
-	However, we can show how they can work together with a simple table.
+	We can display how they can work together with a simple table.
 
 */
 
