@@ -1389,6 +1389,99 @@ top_half|
        4|
        5|
 
+-- 23. How can you insert a new row into a table OR update the row if it already exists?
+       
+/*
+
+	In PostgreSQL we can use the UPSERT feature to accomplish this task.  In most RDBMS, this
+	feature is called a MERGE.  The term UPSERT is because this is a combination of an UPdate and
+	and inSERT.
+	
+	We would need to add the ON CONFLICT clause to the INSERT statement to utilize the UPSERT feature.
+	
+	For this exercise we will presuppose that the user_name MUST be unique and a user can only have ONE
+	phone number on record. 
+
+*/
+
+DROP TABLE IF EXISTS user_phone_number;
+
+CREATE TABLE user_phone_number (
+	user_name TEXT UNIQUE,
+	user_phone varchar(50)
+);
+
+INSERT INTO user_phone_number (user_name, user_phone)
+VALUES 
+	('jaime', '555-555-5555'),
+	('lara', '444-444-4444'),
+	('kristen', '222-222-2222');
+
+-- We now have a table with unique user_names and a phone number.
+
+SELECT * FROM user_phone_number;
+
+-- Results:
+
+user_name|user_phone  |
+---------+------------+
+jaime    |555-555-5555|
+lara     |444-444-4444|
+kristen  |222-222-2222|
+
+-- If we attempt to add another phone number to an existing user, a conflict will occur.
+-- we could use DO NOTHING which does nothing if the user_name already exists.
+
+INSERT INTO user_phone_number (user_name, user_phone)
+VALUES
+	('jaime', '123-456-7890')
+ON CONFLICT (user_name)
+DO NOTHING;
+
+-- OR we could update the record.
+
+INSERT INTO user_phone_number (user_name, user_phone)
+VALUES
+	('jaime', '123-456-7890')
+ON CONFLICT (user_name)
+DO 
+	UPDATE SET user_phone = '123-456-7890';
+
+SELECT * FROM user_phone_number;
+
+-- Results:
+
+user_name|user_phone  |
+---------+------------+
+lara     |444-444-4444|
+kristen  |222-222-2222|
+jaime    |123-456-7890|
+
+-- However, if we do not wish to overwrite the previous record, we could append the
+-- new phone number to the column instead of using the previous statement.
+
+INSERT INTO user_phone_number (user_name, user_phone)
+VALUES
+	('jaime', '123-456-7890')
+ON CONFLICT (user_name)
+DO 
+	UPDATE SET user_phone = EXCLUDED.user_phone || ';' || user_phone_number.user_phone;
+
+SELECT * FROM user_phone_number;
+
+-- Results:
+
+user_name|user_phone               |
+---------+-------------------------+
+lara     |444-444-4444             |
+kristen  |222-222-2222             |
+jaime    |123-456-7890;555-555-5555|
+
+
+
+
+
+
 
 
 
