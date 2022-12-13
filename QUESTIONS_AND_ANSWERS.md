@@ -88,7 +88,7 @@ robert|    3|
 
 We can delete duplicate rows by using a **DELETE USING** statement.
  	
-We can use the table created in the previous question to learn how to delete those duplicates.
+We can use the table created in the previous question to learn how to delete those duplicates entries.
 
 ````sql
 DELETE 
@@ -108,7 +108,7 @@ AND
 
 It is always good practice to run a DELETE USING statement as a SELECT statement FIRST to ensure your query is working correctly.
  	
-Let us run our previous query to check again for duplicates.
+Let us run our previous query to check again for duplicate entries.
 
 ````sql
 SELECT
@@ -125,7 +125,7 @@ HAVING
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
 ````
-Lets check the original table's content.  From the results returned, we can see that duplicates have been deleted.
+Now, let's check the contents of the table.  From the results returned, we can see that the duplicate entries have been deleted.
 
 ````sql
 SELECT * FROM duplicate_names;
@@ -155,8 +155,8 @@ The union operator combines two or more **SELECT** statements into one result se
 Please note that to use UNION, each SELECT statement must 
 1. Have the same number of columns selected.
 2. Have the same number of column expressions.
-3. Have the same data type.
- 4. Have them in the same order.
+3. All columns must have the same data type.
+4. All columns must have the same order.
  	
 Let's create two small tables to illustrate this.
 
@@ -185,7 +185,7 @@ VALUES
 	('jaime shaker', '1998'),
 	('george clooney', '2001');
 ````
-Lets use a simple UNION with our SQL statements.
+Lets use a simple **UNION** with our SQL statements.
 
 ````sql
 SELECT * FROM coolest_guy_ever
@@ -202,7 +202,7 @@ brad pitt        |1994|
 arthur fonzarelli|1960|
 jaime shaker     |1998|
 
-Lets use a simple UNION ALL.
+Lets use a simple **UNION ALL**.
 
 ````sql
 SELECT * FROM coolest_guy_ever
@@ -225,7 +225,8 @@ george clooney   |2001|
 <a name="q4"></a>
 #### 4. Difference between rank,row_number and dense_rank?
 
-RANK, DENSE_RANK and ROW_NUMBER are all analytical window functions.
+RANK, DENSE_RANK and ROW_NUMBER are called window functions.  They must be used with the
+**OVER** clause.
 * **RANK**: Will rank a column but will skip a value if there are ties.
 * **DENSE_RANK**: Will rank a column bbut will NOT skip a value for ties.
 * **ROW_NUMBER**: Assigns a unique row number to each row.
@@ -265,7 +266,7 @@ FROM
 
 The results are ordered by salary in descending order.
 * **RANK**: Shows that some user salaries tied, but then skips that amount until the next rank.
-* **DENSE_RANK**: Shows that some user salaries tied, but but does NOT skip anything and goes immediately to the next rank. 
+* **DENSE_RANK**: Shows that some user salaries tied, but does NOT skip anything and goes immediately to the next rank. 
 * **ROW_NUMBER**: Gives a unique row number to every row.
 
 **Results:**
@@ -288,7 +289,7 @@ jennifer | 75000|   8|         5|         8|
 #### 5. Find records in a table which are not present in another table.
 
 This type of a join is called an **anti-join**.  An anti-join does not have it's own syntax.
-It is basically a left join (or right join) with a WHERE clause.
+It is basically a left join (or right join) with a **WHERE** clause.
  	
 Let's display this by performing a **LEFT ANTI-JOIN**.
  	
@@ -358,7 +359,7 @@ id|
 This question will require us to rank salaries and partition that ranking
 by the department of each individual employee.
  	
-I will also add a manager id column so as to use this table in the next question also.
+I will add a manager id column to be used in the next question.
 
 ````sql
 DROP TABLE IF EXISTS employee;
@@ -424,11 +425,11 @@ jane    |SALES     | 80000|  2|
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q7"></a>
-#### 7. Find employees with greater salaries than their manager's salary.
+#### 7. Find employees with salaries greater than their manager's salary.
 
 Using the employee salary from the previous question, we can 
-find this answer using a sub-query in the where clause. I added
-a sub-query to the select statement to show the manager salary also.
+find this answer using a sub-query in the **WHERE** clause. I added
+a sub-query to the select statement to also show the manager salary for reference.
 
 ````sql
 SELECT
@@ -519,9 +520,9 @@ id|
 <a name="q9"></a>
  #### 9. Update a table and swap gender values.
 
-This question can be answered using a simple CASE statement in an update query.
+This question can be answered using a **CASE** statement in an update query.
 
-First, lets create a simple table where (**M**)ales have odd id numbers and (**F**)emales have even id numbers.
+First, lets create a table where (**M**)ales have an odd id number and (**F**)emales have an even id number.
 
 ````sql
 DROP TABLE IF EXISTS people;
@@ -561,7 +562,7 @@ id|name       |gender|
  7|christopher|M     |
  8|maria      |F     |
 
- Now lets **UPDATE** the table and swap the gender values.
+ Now lets **UPDATE** the table and swap the gender values using a **CASE** statement.
 
 ````sql
 UPDATE people
@@ -1006,7 +1007,7 @@ The order of execution is as follows:
  	because the GROUP does NOT exist when the WHERE clause if filtering.
 - **HAVING** is used for filtering values from a GROUP which would allow you to use aggregate functions within its conditions.
 
-Let's create create a table where we can illustrate the differences.
+Let's create a table where we can illustrate the differences.
 
 ````sql
 DROP TABLE IF EXISTS avg_student_grades;
@@ -1048,7 +1049,7 @@ john        |   83|
 mary        |   99|
 mary        |   92|
 
-Let's use a **HAVING** clause to find the MAX() score in a group for test scores greater than 80.
+Let's use a **HAVING** clause to find the **MAX()** score in a group for test scores greater than 80.
 
 ````sql
 SELECT
@@ -1150,7 +1151,7 @@ VALUES
 	('jake', 27),
 	('barbara', 42);
 ````
-First we have to create a new table with the same structure as the original table and no data.
+First we have to create a new table with the same structure as the original table and without data.
 
 ````sql
 DROP TABLE IF EXISTS copied_table;
@@ -1182,7 +1183,7 @@ user_id|user_name|user_age|
 7|jake     |      27|
 8|barbara  |      42|
 
-Let us now **DROP** the original table.
+We can now **DROP** the original table.
 
 ````sql
 DROP TABLE original_table;
@@ -1437,7 +1438,7 @@ moment_in_time               |century|decade|year|month|day|timezone|
 
 This problem can be solved using a sub-query in the WHERE statement.
 	
-Lets use a CTE with the **GENERATE_SERIES()** function to create 10 rows to query.
+Let's use a CTE with the **GENERATE_SERIES()** function to create 10 rows to query.
 
 ````sql
 WITH get_half AS (
@@ -1468,8 +1469,8 @@ top_half|
 <a name="q23"></a>
 #### 23. How can you insert a new row into a table OR update the row if it already exists?
 
-In PostgreSQL we can use the UPSERT feature to accomplish this task.  In most RDBMS, this
-feature is called a MERGE.  The term UPSERT is because this is a combination of an **UP**date and an in**SERT** statement.
+In PostgreSQL we can use the **UPSERT** feature to accomplish this task.  In most RDBMS, this
+feature is called a **MERGE**.  The term **UPSERT** is derived from a combination of an **UP**date and an in**SERT** statement.
 	
 We would need to add the **ON CONFLICT** clause to the **INSERT** statement to utilize the UPSERT feature.
 	
@@ -1511,7 +1512,7 @@ ON CONFLICT (user_name)
 DO NOTHING;
 ````
 
-OR
+❗ OR ❗
 
 We could update the record.
 
@@ -1560,7 +1561,7 @@ jaime    |123-456-7890;555-555-5555|
 <a name="q24"></a>
 #### 24. What is the use of the COALESCE() function?
 
-The **COALESCE()** functions has the same functionality as IFNULL in standard SQL.  It is basically a function that accepts an unlimited number of arguments and returns the first argument that is NOT null.
+The **COALESCE()** function has the same functionality as **IFNULL** in standard SQL.  It is basically a function that accepts an unlimited number of arguments and returns the first argument that is NOT null.
 	
 Once it has found the first non-null argument, all other arguments are NOT evaluated.  It will return a null value if all arguments are null.
 
@@ -1579,7 +1580,7 @@ jaime   |
 <a name="q25"></a>
 #### 25.  Is the COALSCE() function the same are the NULLIF() function?
 
-No.  The **COALSCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a '' to our previous query to display what **COALESCE()** returns.
+No.  The **COALSCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a **' '** to our previous query to display what **COALESCE()** returns.
 
 ````sql
 SELECT COALESCE(NULL, '', 'jaime', 'shaker');
@@ -1591,7 +1592,7 @@ coalesce|
 --------|
 |
 
-This results in an empty value because empty (' ') and null are not the same.  The **NULLIF()** function returns NULL if argument #1 is equal to Argument #2, else it returns Argument #1.
+This results in an empty value because empty (' ') and NULL are not the same.  The **NULLIF()** function returns NULL if argument #1 is equal to Argument #2, else it returns Argument #1.
 
 ````sql
 SELECT NULLIF('jaime', 'shaker');
@@ -1615,7 +1616,7 @@ nullif|
 ------|
 |
 
-We can display how they can work together with a simple table.
+We can display how they can work together with a table that has both empty fields and NULL fields.
 
 ````sql
 DROP TABLE IF EXISTS convert_nulls;
