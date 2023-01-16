@@ -1578,9 +1578,9 @@ jaime   |
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q25"></a>
-#### 25.  Is the COALSCE() function the same are the NULLIF() function?
+#### 25.  Is the COALESCE() function the same are the NULLIF() function?
 
-No.  The **COALSCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a **' '** to our previous query to display what **COALESCE()** returns.
+No.  The **COALESCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a **' '** to our previous query to display what **COALESCE()** returns.
 
 ````sql
 SELECT COALESCE(NULL, '', 'jaime', 'shaker');
