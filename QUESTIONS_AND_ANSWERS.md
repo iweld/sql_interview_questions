@@ -185,7 +185,7 @@ VALUES
 	('jaime shaker', '1998'),
 	('george clooney', '2001');
 ````
-Lets use a simple **UNION** with our SQL statements.
+Let's use a simple **UNION** with our SQL statements.
 
 ````sql
 SELECT * FROM coolest_guy_ever
@@ -202,7 +202,7 @@ brad pitt        |1994|
 arthur fonzarelli|1960|
 jaime shaker     |1998|
 
-Lets use a simple **UNION ALL**.
+Let's use a simple **UNION ALL**.
 
 ````sql
 SELECT * FROM coolest_guy_ever
@@ -291,7 +291,7 @@ jennifer | 75000|   8|         5|         8|
 This type of a join is called an **anti-join**.  An anti-join does not have it's own syntax.
 It is basically a left join (or right join) with a **WHERE** clause.
  	
-Let's display this by performing a **LEFT ANTI-JOIN**.
+We can display this by performing a **LEFT ANTI-JOIN**.
  	
 Let's create 2 different tables for this query.
 
@@ -429,7 +429,7 @@ jane    |SALES     | 80000|  2|
 
 Using the employee salary from the previous question, we can 
 find this answer using a sub-query in the **WHERE** clause. I added
-a sub-query to the select statement to also show the manager salary for reference.
+a sub-query to the select statement to also show the manager's salary for reference.
 
 ````sql
 SELECT
@@ -562,7 +562,7 @@ id|name       |gender|
  7|christopher|M     |
  8|maria      |F     |
 
- Now lets **UPDATE** the table and swap the gender values using a **CASE** statement.
+ Now let's **UPDATE** the table and swap the gender values using a **CASE** statement.
 
 ````sql
 UPDATE people
@@ -1075,7 +1075,7 @@ mary        |       99|
 <a name="q15"></a>
 #### 15. From a table of names, write a query that only returns EVEN number rows.
 
-For this query we will use the **ROW_NUMBER()** window function in a CTE (Common Table Expression) and the **MODULO** operator.  For easier tracking, I will use common MALE names for odd number entries and FEMALE names for the even number entries.
+For this query we will use the **ROW_NUMBER()** window function in a CTE (Common Table Expression) and the **MODULO** (remainder) operator.  For easier tracking, I will use common MALE names for odd number entries and FEMALE names for the even number entries.
 
 ````sql
 DROP TABLE IF EXISTS common_names;
