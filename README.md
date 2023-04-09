@@ -27,4 +27,4 @@ All solutions were coded using PostgreSQL.
 22. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q22">Produce a query that only returns the top 50% of the records</a>.
 23. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q23">How can you insert a new row into a table OR update the row if it already exists</a>?
 24. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q24">What is the use of the COALESCE() function</a>?
-25. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q25">Is the COALESCE() function the same are the NULLIF() function</a>?
+25. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q25">Is the COALESCE() function the same as the NULLIF() function</a>?
