@@ -245,7 +245,7 @@ FROM
 WHERE
 	belt_rankings = 2;
 
--- This will cause an error becuase the belt_rankings column does not exist (yet)
+-- This will cause an error because the belt_rankings column does not exist (yet)
 -- when the WHERE clause is executed.
 
 SQL Error [42703]: ERROR: column "belt_rankings" does not exist
