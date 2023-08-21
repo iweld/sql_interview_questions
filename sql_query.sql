@@ -7,17 +7,16 @@
 -- 1. How do you find duplicates in a table?
 
 /*
-	To find the duplicates in a table, let's first create a table with some
-	duplicate rows.
+	To find the duplicates in a table, first create a table with duplicate rows.
 */
 
 DROP TABLE IF EXISTS duplicate_names;
 CREATE TABLE duplicate_names (
-	id serial,
-	name text
+	id int GENERATED ALWAYS AS IDENTITY,
+	user_name text
 );
 
-INSERT INTO duplicate_names (name)
+INSERT INTO duplicate_names (user_name)
 VALUES
 	('jaime'),
 	('robert'),
@@ -30,39 +29,39 @@ VALUES
 	('robert'),
 	('fred');
 
--- Run a select * statement to see all of our entries.
+-- Use a select * statement to see all of our entries.
 
 SELECT * FROM duplicate_names;
 
 -- Results:
 
-id|name   |
---+-------+
- 1|jaime  |
- 2|robert |
- 3|william|
- 4|lisa   |
- 5|robert |
- 6|john   |
- 7|jane   |
- 8|lisa   |
- 9|robert |
-10|fred   |
+id|user_name|
+--+---------+
+ 1|jaime    |
+ 2|robert   |
+ 3|william  |
+ 4|lisa     |
+ 5|robert   |
+ 6|john     |
+ 7|jane     |
+ 8|lisa     |
+ 9|robert   |
+10|fred     |
 
 /*
-	We can use the COUNT() function to find all duplicate rows.
+	Use the COUNT() function to find all duplicate rows.
 */
 
 SELECT
 	-- Get the column.
-	name,
+	user_name,
 	-- Count how many times this name occurs.
 	count(*)
 FROM
 	duplicate_names
 GROUP BY 
 	-- Using an aggregate function forces us to group all like names together.
-	name
+	user_name
 HAVING 
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
@@ -73,10 +72,10 @@ HAVING
 	The results show all the names that appear more than once and their count.
 */
 
-name  |count|
-------+-----+
-lisa  |    2|
-robert|    3|
+user_name|count|
+---------+-----+
+lisa     |    2|
+robert   |    3|
 
 
 -- 2. How do you delete duplicates from a table?
