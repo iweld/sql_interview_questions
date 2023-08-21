@@ -1,5 +1,18 @@
-# sql_interview_questions
-A list of the most common entry level SQL technical interview questions found online and my answers.
+## Common SQL interview Questions and Answers
+
+**Author**: Jaime M. Shaker <br />
+**Email**: jaime.m.shaker@gmail.com <br />
+**Website**: https://www.shaker.dev <br />
+**LinkedIn**: https://www.linkedin.com/in/jaime-shaker/  <br />
+
+:exclamation: If you find this repository helpful, please consider giving it a :star:. Thanks! :exclamation:
+
+
+❗ **Note** ❗
+
+### Introduction:
+
+This repository contains entry-level SQL interview questions that appear in many interview preperation resources found online.  
 
 All solutions were coded using PostgreSQL.
 

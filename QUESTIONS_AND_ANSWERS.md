@@ -1,16 +1,23 @@
-# Common SQL interview Questions and Answers.
-### by jaime.m.shaker@gmail.com
+## Common SQL interview Questions and Answers
+
+**Author**: Jaime M. Shaker <br />
+**Email**: jaime.m.shaker@gmail.com <br />
+**Website**: https://www.shaker.dev <br />
+**LinkedIn**: https://www.linkedin.com/in/jaime-shaker/  <br />
+
+:exclamation: If you find this repository helpful, please consider giving it a :star:. Thanks! :exclamation:
 
 
 ❗ **Note** ❗
 
-These entry level SQL interview questions appear in many interview preperation resources found online.  
+### Introduction:
+
+This repository contains entry-level SQL interview questions that appear in many interview preperation resources found online.  
 
 <a name="q1"></a>
-#### 1. How do you find duplicates in a table?
+#### 1. How do you find duplicates entries in a table?
 
-To find the duplicates in a table, let's first create a table with some
-	duplicate rows.
+To find the duplicates in a table, first create a table with duplicate rows.
 
 ````sql
 DROP TABLE IF EXISTS duplicate_names;
