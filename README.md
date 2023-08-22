@@ -17,7 +17,7 @@ This repository contains entry-level SQL interview questions that appear in many
 All solutions were coded using PostgreSQL.
 
 1. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q1">How do you find duplicates in a table</a>?
-2. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q2">How do you delete duplicates from a table</a>?
+2. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q2">How do you delete multiple entries from a table</a>?
 3. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q3">What is the difference between union and union all</a>?
 4. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q4">What is the difference between rank,row_number and dense_rank</a>?
 5. <a href="https://github.com/iweld/sql_interview_questions/blob/main/QUESTIONS_AND_ANSWERS.md#q5">Find records in a table which are not present in another table</a>.

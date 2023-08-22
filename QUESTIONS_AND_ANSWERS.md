@@ -20,13 +20,13 @@ This repository contains entry-level SQL interview questions that appear in many
 To find the duplicates in a table, first create a table with duplicate rows.
 
 ````sql
-DROP TABLE IF EXISTS pets;
-CREATE TABLE pets (
-	pet_id int GENERATED ALWAYS AS IDENTITY,
-	pet_type TEXT
+DROP TABLE IF EXISTS animals;
+CREATE TABLE animals (
+	animal_id int GENERATED ALWAYS AS IDENTITY,
+	animal_type TEXT
 );
 
-INSERT INTO pets (pet_type)
+INSERT INTO animals (animal_type)
 VALUES
 	('dog'),
 	('cat'),
@@ -43,37 +43,37 @@ VALUES
 Use a **select** **\*** statement to see all of our entries.
 
 ````sql
-SELECT * FROM pets;
+SELECT * FROM animals;
 ````
 
 **Results:**
 
-pet_id|pet_type|
-------|--------|
-1|dog     |
-2|cat     |
-3|fish    |
-4|hamster |
-5|dog     |
-6|pig     |
-7|cat     |
-8|cat     |
-9|rabbit  |
-10|turtle  |
+animal_id|animal_type|
+---------|-----------|
+1|dog        |
+2|cat        |
+3|fish       |
+4|hamster    |
+5|dog        |
+6|pig        |
+7|cat        |
+8|cat        |
+9|rabbit     |
+10|turtle     |
 
 Use the **COUNT()** function to find all duplicate rows.
 
 ````sql
 SELECT
 	-- Get the column.
-	pet_type,
-	-- Count how many times this pet_type occurs.
+	animal_type,
+	-- Count how many times this animal_type occurs.
 	count(*)
 FROM
-	pets
+	animals
 GROUP BY 
-	-- Using an aggregate function forces us to group all like pet_types together.
-	pet_type
+	-- Using an aggregate function forces us to group all like animal_types together.
+	animal_type
 HAVING 
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
@@ -83,51 +83,48 @@ HAVING
 
 The results show all the names that appear more than once and their count.
 
-user_name|count|
----------|-----|
-lisa     |    2|
-robert   |    3|
+animal_type|count|
+-----------|-----|
+dog        |    2|
+cat        |    3|
 
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
 <a name="q2"></a>
-#### 2. How do you delete duplicates from a table?
+#### 2. How do you delete multiple entries from a table?
 
-We can delete duplicate rows by using a **DELETE USING** statement.
+You can delete duplicate rows by using a **DELETE USING** statement.
  	
-We can use the table created in the previous question to learn how to delete those duplicates entries.
+Use the table created in the previous question to show how to delete those duplicates entries.
 
 ````sql
 DELETE 
 FROM 
 	-- Add an alias to the id's we wish to keep
-	duplicate_names AS d1
+	animals AS a1
 USING 
 	-- Add an alias to the duplicate id's
-	duplicate_names AS  d2
+	animals AS  a2
 WHERE 
 	-- This statement will remove the greater value id's.
-	d1.id > d2.id
+	a1.animal_id > a2.animal_id
 AND 
 	-- This statement ensures that both values are identical.
-	d1.name = d2.name;
-````
-
-It is always good practice to run a DELETE USING statement as a SELECT statement FIRST to ensure your query is working correctly.
- 	
-Let us run our previous query to check again for duplicate entries.
+	a1.animal_type = a2.animal_type;
+```
+Run the previous query to check again for duplicate entries.
 
 ````sql
 SELECT
 	-- Get the column.
-	name,
-	-- Count how many times this name occurs.
+	animal_type,
+	-- Count how many times this animal_type occurs.
 	count(*)
 FROM
-	duplicate_names
+	animals
 GROUP BY 
-	-- Using an aggregate function forces us to group all like names together.
-	name
+	-- Using an aggregate function forces us to group all like animal_types together.
+	animal_type
 HAVING 
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
@@ -135,20 +132,20 @@ HAVING
 Now, let's check the contents of the table.  From the results returned, we can see that the duplicate entries have been deleted.
 
 ````sql
-SELECT * FROM duplicate_names;
+SELECT * FROM animals;
 ````
 
 **Results:**
 
-id|name   |
---|-------|
- 1|jaime  |
- 2|robert |
- 3|william|
- 4|lisa   |
- 6|john   |
- 7|jane   |
-10|fred   |
+animal_id|animal_type|
+---------|-----------|
+1|dog        |
+2|cat        |
+3|fish       |
+4|hamster    |
+6|pig        |
+9|rabbit     |
+10|turtle     |
 
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
