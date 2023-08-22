@@ -1,4 +1,14 @@
-
+/*
+	Simple Monthly Reports
+	Author: Jaime M. Shaker
+	Email: jaime.m.shaker@gmail.com or jaime@shaker.dev
+	Website: https://www.shaker.dev
+	LinkedIn: https://www.linkedin.com/in/jaime-shaker/
+	
+	File Name: monthly_reports.sql
+	Description: A simple script to display the flexability of SQL/PL functions.
+	
+*/
 
 -- Create a table that contains of the monthly sales
 DROP TABLE IF EXISTS monthly_sales;
@@ -100,7 +110,7 @@ $$
 	END;
 $$
 
--- Change the Month numerical value to get only that months results.
+-- Pass the numerical Month value to get only that months results.
 SELECT
 	transaction_month,
 	number_of_transactions,
@@ -144,6 +154,7 @@ March            |                     2|         45|
 */
 
 
+-- I hope that helps!
 
 
 
