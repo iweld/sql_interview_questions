@@ -10,43 +10,43 @@
 	To find the duplicates in a table, first create a table with duplicate rows.
 */
 
-DROP TABLE IF EXISTS duplicate_names;
-CREATE TABLE duplicate_names (
-	id int GENERATED ALWAYS AS IDENTITY,
-	user_name text
+DROP TABLE IF EXISTS pets;
+CREATE TABLE pets (
+	pet_id int GENERATED ALWAYS AS IDENTITY,
+	pet_type TEXT
 );
 
-INSERT INTO duplicate_names (user_name)
+INSERT INTO pets (pet_type)
 VALUES
-	('jaime'),
-	('robert'),
-	('william'),
-	('lisa'),
-	('robert'),
-	('john'),
-	('jane'),
-	('lisa'),
-	('robert'),
-	('fred');
+	('dog'),
+	('cat'),
+	('fish'),
+	('hamster'),
+	('dog'),
+	('pig'),
+	('cat'),
+	('cat'),
+	('rabbit'),
+	('turtle');
 
 -- Use a select * statement to see all of our entries.
 
-SELECT * FROM duplicate_names;
+SELECT * FROM pets;
 
 -- Results:
 
-id|user_name|
---+---------+
- 1|jaime    |
- 2|robert   |
- 3|william  |
- 4|lisa     |
- 5|robert   |
- 6|john     |
- 7|jane     |
- 8|lisa     |
- 9|robert   |
-10|fred     |
+pet_id|pet_type|
+------+--------+
+     1|dog     |
+     2|cat     |
+     3|fish    |
+     4|hamster |
+     5|dog     |
+     6|pig     |
+     7|cat     |
+     8|snake   |
+     9|rabbit  |
+    10|turtle  |
 
 /*
 	Use the COUNT() function to find all duplicate rows.
@@ -54,14 +54,14 @@ id|user_name|
 
 SELECT
 	-- Get the column.
-	user_name,
+	pet_type,
 	-- Count how many times this name occurs.
 	count(*)
 FROM
-	duplicate_names
+	pets
 GROUP BY 
 	-- Using an aggregate function forces us to group all like names together.
-	user_name
+	pet_type
 HAVING 
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
