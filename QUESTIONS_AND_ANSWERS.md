@@ -611,7 +611,7 @@ Let's create two new tables to display the different types of joins.
 * FULL OUTER JOIN
 * CROSS JOIN 	
 
-````sql
+```sql
 DROP TABLE IF EXISTS left_names;
 CREATE TABLE left_names (
 	id text
@@ -642,10 +642,10 @@ VALUES
 	('melissa'),
 	('chris'),
 	('jaime');
-````
+```
 **INNER JOIN**
 
-````sql
+```sql
 SELECT
 	count(*) result_count
 from
@@ -657,7 +657,7 @@ from
 		right_names AS r
 	ON
 		l.id = r.id) AS tmp
-````
+```
 
 **Inner-Query Results**:
 
@@ -676,7 +676,7 @@ result_count|
 
 **LEFT JOIN**
 
-````sql
+```sql
 SELECT
 	count(*) result_count
 from
@@ -688,7 +688,7 @@ from
 		right_names AS r
 	ON
 		l.id = r.id) AS tmp
-````
+```
 
 **Inner-Query Results**:
 
@@ -712,7 +712,7 @@ result_count|
 
 **RIGHT JOIN**
 
-````sql
+```sql
 SELECT
 	count(*) result_count
 from
@@ -724,7 +724,7 @@ from
 		right_names AS r
 	ON
 		l.id = r.id) AS tmp
-````
+```
 
 **Inner-Query Results**:
 
@@ -747,7 +747,7 @@ result_count|
 
 **FULL OUTER JOIN**
 
-````sql
+```sql
 SELECT
 	count(*) result_count
 from
@@ -760,7 +760,7 @@ from
 		right_names AS r
 	ON
 		l.id = r.id) AS tmp
-````
+```
 
 **Inner-Query Results**:
 
@@ -788,7 +788,7 @@ result_count|
 
 **CROSS JOIN**
 
-````sql
+```sql
 SELECT
 	count(*) result_count
 from
@@ -798,7 +798,7 @@ from
 		left_names AS l
 	CROSS JOIN 
 		right_names AS r) AS tmp
-````
+```
 
 **Inner-Query Results**:
 
@@ -819,7 +819,7 @@ result_count|
 - **TRUNCATE** is a DDL (Data Definition Language) command that is used to empty/delete  **ALL** rows from a table but maintains the tables structure.
 - **DROP** is a DDL (Data Definition Language) command that is used to completly delete the table and its structure from the schema/database.
 
-````sql
+```sql
 DROP TABLE IF EXISTS generic_table;
 CREATE TABLE generic_table (
 	id int
@@ -833,13 +833,13 @@ VALUES
 	(4),
 	(5),
 	(6);
-````
+```
 
 Lets take a look at our generic table.
 
-````sql
+```sql
 select * from generic_table;
-````
+```
 **Results**:
 
 id|
@@ -853,7 +853,7 @@ id|
 
 Let's **DELETE** all rows with even number ID's.
 
-````sql
+```sql
 DELETE FROM generic_table
 WHERE (id % 2) = 0;
 ````
@@ -862,7 +862,7 @@ Let's take a look at our generic table after the **DELETE** statement.
 
 ````sql
 select * from generic_table;
-````
+```
 **Results**:
 
 id|
@@ -873,14 +873,14 @@ id|
 
 Let's use the **TRUNCATE** statement.
 
-````sql
+```sql
 TRUNCATE TABLE generic_table;
-````
+```
 Lets take a look at our generic table after the **TRUNCATE** statement.
 
-````sql
+```sql
 select * from generic_table;
-````
+```
 **Results**:
 
 id|
@@ -888,14 +888,14 @@ id|
 
 Let's use the **DROP** statement.
 
-````sql
+```sql
 DROP TABLE generic_table;
-````
+```
 Lets take a look at our generic table after the **DROP** statement.
 
-````sql
+```sql
 select * from generic_table;
-````
+```
 **Results**:
 
 This results in an error. 
@@ -909,11 +909,11 @@ This results in an error.
 - **NOW()** returns the timestamp (YYYY-MM-DD HH:MM:SS) of when the function was executed.
 - **CURRENT_DATE** returns the date of the current day (YYYY-MM-DD).
 
-````sql
+```sql
 SELECT 
 	now(),
 	current_date;
-````
+```
 
 **Results**:
 
@@ -931,7 +931,7 @@ now                          |current_date|
 
 Let's create a new table.
 
-````sql
+```sql
 DROP TABLE IF EXISTS student_grades;
 CREATE TABLE student_grades (
 	student_name TEXT,
@@ -949,18 +949,18 @@ VALUES
 	('brenda', 90),
 	('michael', 71),
 	('xavier', 69);
-````
+```
 
 Let's use the **IN** operator to returns students who missed the next letter grade by one point.
 
-````sql
+```sql
 SELECT
 	student_name,
 	score
 FROM 
 	student_grades
 WHERE score IN (69, 79, 89);
-````
+```
 
 **Results**:
 
@@ -972,14 +972,14 @@ xavier      |   69|
 
 Let's use the BETWEEN operator to returns students who have a score between 85 and 95.
 
-````sql
+```sql
 SELECT
 	student_name,
 	score
 FROM 
 	student_grades
 WHERE score BETWEEN 85 AND 95;
-````
+```
 
 **Results**:
 
@@ -1013,7 +1013,7 @@ The order of execution is as follows:
 
 Let's create a table where we can illustrate the differences.
 
-````sql
+```sql
 DROP TABLE IF EXISTS avg_student_grades;
 CREATE TABLE avg_student_grades (
 	student_name TEXT,
@@ -1028,11 +1028,11 @@ VALUES
 	('john', 83),
 	('mary', 92),
 	('jacob', 75);
-````
+```
 
 Let's use a **WHERE** clause to find all test scores greater than 80.
 
-````sql
+```sql
 SELECT
 	student_name,
 	score
@@ -1042,7 +1042,7 @@ WHERE
 	score > 80
 ORDER BY
 	student_name;
-````
+```
 
 **Results**:
 
@@ -1055,7 +1055,7 @@ mary        |   92|
 
 Let's use a **HAVING** clause to find the **MAX()** score in a group for test scores greater than 80.
 
-````sql
+```sql
 SELECT
 	student_name,
 	max(score)AS max_score
@@ -1065,7 +1065,7 @@ GROUP BY
 	student_name
 HAVING 
 	max(score) > 80;
-````
+```
 
 **Results**:
 
@@ -1081,7 +1081,7 @@ mary        |       99|
 
 For this query we will use the **ROW_NUMBER()** window function in a CTE (Common Table Expression) and the **MODULO** (remainder) operator.  For easier tracking, I will use common MALE names for odd number entries and FEMALE names for the even number entries.
 
-````sql
+```sql
 DROP TABLE IF EXISTS common_names;
 CREATE TABLE common_names (
 	user_name TEXT
@@ -1097,10 +1097,10 @@ VALUES
 	('laura'),
 	('john'),
 	('olivia');
-````
+```
 We will use a CTE to give each entry a unique row number.
 
-````sql
+```sql
 WITH get_row_number as (
 	SELECT
 		ROW_NUMBER() OVER () AS rn,
@@ -1108,17 +1108,17 @@ WITH get_row_number as (
 	FROM
 		common_names
 )
-````
+```
 Now let's select only the names where the newly assigned row number is EVEN.
 
-````sql
+```sql
 SELECT
 	rn as even_id,
 	user_name
 FROM
 	get_row_number
 WHERE (rn % 2) = 0;
-````
+```
 
 **Results**:
 
@@ -1136,7 +1136,7 @@ even_id|user_name|
 
 Let's create a new table.
 
-````sql
+```sql
 DROP TABLE IF EXISTS original_table;
 CREATE TABLE original_table (
 	user_id serial,
@@ -1154,26 +1154,26 @@ VALUES
 	('britney', 39),
 	('jake', 27),
 	('barbara', 42);
-````
+```
 First we have to create a new table with the same structure as the original table and without data.
 
-````sql
+```sql
 DROP TABLE IF EXISTS copied_table;
 CREATE TABLE copied_table AS 
 TABLE original_table
 WITH NO DATA;
-````
+```
 This statement creates an empty table with the same structure as the original table.  Now we can **INSERT** (copy) the data from the original table.
 
-````sql
+```sql
 INSERT INTO copied_table
 (SELECT * FROM original_table);
-````
+```
 We can take a look at our copied table.
 
-````sql
+```sql
 SELECT * FROM copied_table;
-````
+```
 **Results**:
 
 user_id|user_name|user_age|
@@ -1189,9 +1189,9 @@ user_id|user_name|user_age|
 
 We can now **DROP** the original table.
 
-````sql
+```sql
 DROP TABLE original_table;
-````
+```
 
 <a href="https://github.com/iweld/sql_interview_questions">Back To Questions</a>
 
@@ -1203,7 +1203,7 @@ LIKE and ILIKE are both used in pattern matching.
 - **LIKE** is used for case-sensitive pattern matching.
 - **ILIKE** is used for case-insensitive pattern matching.
 
-````sql
+```sql
 DROP TABLE IF EXISTs case_sensitivity;
 CREATE TABLE case_sensitivity (
 	crazy_case TEXT 
@@ -1215,15 +1215,15 @@ VALUES
 	('jaime'),
 	('JAIME'),
 	('jAImE');
-````
+```
 Let's see what LIKE pattern matching returns when using upper-case characters.
 
-````sql
+```sql
 SELECT
 	*
 FROM case_sensitivity
 WHERE crazy_case LIKE '%JAIME%';
-````
+```
 
 **Results**: (Exact match)
 
@@ -1233,12 +1233,12 @@ JAIME     |
 
 Now let's see what ILIKE pattern matching returns.
 
-````sql
+```sql
 SELECT
 	*
 FROM case_sensitivity
 WHERE crazy_case ILIKE '%JAIME%';
-````
+```
 
 **Results**:
 
@@ -1272,7 +1272,7 @@ Scalar functions are calculations that are applied to a value provided by user i
 - REPLACE()
 - SUBSTRING()
 
-````sql
+```sql
 DROP TABLE IF EXISTS function_examples;
 CREATE TABLE function_examples (
 	student_name TEXT,
@@ -1293,10 +1293,10 @@ VALUES
 	('Jaime', 77),
 	('Sophia', 81),
 	('William', 80);
-````
+```
 Let's return values using the **Aggregate** functions. Order from highest total_score to lowest. We will also round the AVG to two decimal points.
 
-````sql
+```sql
 SELECT
 	student_name,
 	COUNT(*) AS name_count,
@@ -1310,7 +1310,7 @@ GROUP BY
 	student_name
 ORDER BY
 	total_score DESC;
-````
+```
 
 **Results**: 
 
@@ -1322,7 +1322,7 @@ William     |         4|    78.25|       68|       86|        313|
 
 Let's return values using the **Scalar** functions.
 
-````sql
+```sql
 SELECT
 	DISTINCT student_name,
 	LENGTH(student_name) AS string_length,
@@ -1333,7 +1333,7 @@ SELECT
 	SUBSTRING(student_name, 1, 3) AS first_three_chars
 FROM
 	function_examples;
-````
+```
 
 **Results**: 
 
@@ -1352,11 +1352,11 @@ Although PostgreSQL does not have a function to calculate the median of a column
 	
 For simplicity, let's find the **MEDIAN** using a series of numbers from 1-25.
 
-````sql
+```sql
 SELECT 
  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY generate_series) AS median
 FROM generate_series(1, 25);
-````
+```
 **Results**: 
 
 median|
@@ -1372,7 +1372,7 @@ In PostgreSQL we can concatnate (join) strings using the **CONCAT()** function o
 
 Let's create a table with two columns.  One for the users first name and one for their surname/last name. 
 
-````sql
+```sql
 DROP TABLE IF EXISTS full_names;
 CREATE TABLE full_names (
 	first_name TEXT,
@@ -1385,17 +1385,17 @@ VALUES
 	('clint', 'eastwood'),
 	('martha', 'stewart'),
 	('captain', 'kangaroo');
-````
+```
 
 Now we can use a select statement to concatnate our columns.
 
-````sql
+```sql
 SELECT
 	concat(first_name, ' ', last_name) AS fullname_concat_function,
 	first_name || ' ' || last_name AS fullname_bar_alternative
 FROM
 	full_names;
-````
+```
 
 **Results**: 
 
