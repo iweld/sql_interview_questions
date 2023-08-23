@@ -81,9 +81,9 @@ cat        |    3|
 -- 2. How do you delete duplicates from a table?
 
 /*
- 	We can delete duplicate rows by using a DELETE USING statement.
+ 	You can delete duplicate rows by using a DELETE USING statement.
  	
-	We can use the table created in the previous question to show how to delete
+	Use the table created in the previous question to show how to delete
 	those duplicates.
 */
 
@@ -101,10 +101,7 @@ AND
 	-- This statement ensures that both values are identical.
 	a1.animal_type = a2.animal_type;
 
-/*
- 	It is always good practice to run a DELETE USING statement as a SELECT statement FIRST to ensure
- 	your query is working correctly.
- 	
+/*	
 	Run previous previous query to check for duplicates.
 */
 
@@ -521,7 +518,7 @@ id|
  
 DROP TABLE IF EXISTS people;
 CREATE TABLE people (
-	id serial,
+	id int GENERATED ALWAYS AS IDENTITY,
 	name TEXT,
 	gender varchar(1)
 );

@@ -531,7 +531,7 @@ First, lets create a table where (**M**)ales have an odd id number and (**F**)em
 ````sql
 DROP TABLE IF EXISTS people;
 CREATE TABLE people (
-	id serial,
+	id int GENERATED ALWAYS AS IDENTITY,
 	name TEXT,
 	gender varchar(1)
 );
