@@ -594,7 +594,7 @@ id|name       |gender|
  
 DROP TABLE IF EXISTS left_names;
 CREATE TABLE left_names (
-	id text
+	id TEXT
 );
 
 INSERT INTO left_names
@@ -962,7 +962,7 @@ brenda      |   90|
  		
 */
 
--- Let's create create a table where we can illustrate the differences.
+-- Create a table where we can illustrate the differences.
 
 DROP TABLE IF EXISTS avg_student_grades;
 CREATE TABLE avg_student_grades (
@@ -979,7 +979,7 @@ VALUES
 	('mary', 92),
 	('jacob', 75);
 
--- Let's use a WHERE clause to find all test scores greater than 80.
+-- Use a WHERE clause to find all test scores greater than 80.
 
 SELECT
 	student_name,
@@ -1000,7 +1000,7 @@ john        |   83|
 mary        |   99|
 mary        |   92|
 
--- Let's use a HAVING clause to find the MAX() test score in a group for test scores greater than 80.
+-- Use a HAVING clause to find the MAX() test score in a group for test scores greater than 80.
 
 SELECT
 	student_name,

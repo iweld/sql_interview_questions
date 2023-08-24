@@ -929,7 +929,7 @@ now                          |current_date|
 - **IN** is used to check for values contained in a specific set of values.
 - **BETWEEN** is used to return rows within a range of values.
 
-Let's create a new table.
+Create a new table.
 
 ```sql
 DROP TABLE IF EXISTS student_grades;
@@ -1011,7 +1011,7 @@ The order of execution is as follows:
  	because the GROUP does NOT exist when the WHERE clause if filtering.
 - **HAVING** is used for filtering values from a GROUP which would allow you to use aggregate functions within its conditions.
 
-Let's create a table where we can illustrate the differences.
+Create a table where we can illustrate the differences.
 
 ```sql
 DROP TABLE IF EXISTS avg_student_grades;
@@ -1030,7 +1030,7 @@ VALUES
 	('jacob', 75);
 ```
 
-Let's use a **WHERE** clause to find all test scores greater than 80.
+Use a **WHERE** clause to find all test scores greater than 80.
 
 ```sql
 SELECT
@@ -1053,7 +1053,7 @@ john        |   83|
 mary        |   99|
 mary        |   92|
 
-Let's use a **HAVING** clause to find the **MAX()** score in a group for test scores greater than 80.
+Use a **HAVING** clause to find the **MAX()** score in a group for test scores greater than 80.
 
 ```sql
 SELECT
