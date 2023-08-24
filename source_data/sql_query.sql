@@ -1061,11 +1061,12 @@ SELECT
 	user_name
 FROM
 	get_row_number
-WHERE (rn % 2) = 0;
+WHERE 
+	(rn % 2) = 0;
 
 -- 16. How can we copy the contents of one table to a new table?
 
--- Let's create a new table.
+-- Create a new table.
 
 DROP TABLE IF EXISTS original_table;
 CREATE TABLE original_table (
@@ -1093,7 +1094,7 @@ TABLE original_table
 WITH NO DATA;
 
 -- This statement creates an empty table with the same structure as the original
--- table.  Now we can insert (copy) the data from the original table.
+-- table.  We can now insert (copy) the data from the original table.
 
 INSERT INTO copied_table
 (SELECT * FROM original_table);

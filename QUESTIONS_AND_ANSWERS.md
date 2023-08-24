@@ -1117,7 +1117,8 @@ SELECT
 	user_name
 FROM
 	get_row_number
-WHERE (rn % 2) = 0;
+WHERE 
+	(rn % 2) = 0;
 ```
 
 **Results**:
@@ -1134,7 +1135,7 @@ even_id|user_name|
 <a name="q16"></a>
 #### 16. How can we copy the contents of one table to a new table?
 
-Let's create a new table.
+Create a new table.
 
 ```sql
 DROP TABLE IF EXISTS original_table;
@@ -1163,7 +1164,7 @@ CREATE TABLE copied_table AS
 TABLE original_table
 WITH NO DATA;
 ```
-This statement creates an empty table with the same structure as the original table.  Now we can **INSERT** (copy) the data from the original table.
+This statement creates an empty table with the same structure as the original table.  We can now **INSERT** (copy) the data from the original table.
 
 ```sql
 INSERT INTO copied_table
