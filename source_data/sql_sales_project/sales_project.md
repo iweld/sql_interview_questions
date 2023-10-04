@@ -1,6 +1,7 @@
 This file is written in the markdown language.  Markdown is similar to HTML, but a little easier in my opinion.  You can learn more about markdown at this link
 
 https://www.markdowntutorial.com/
+
 https://www.markdownguide.org/
 
 However, if you follow along with my source code, if should not be too difficult to comprehend.
@@ -17,7 +18,7 @@ It is **FREE** and can be used with MANY different types of Databases.  Using DB
 
 ```sql
 country_count|
--------------|
+-------------+
            19|
 ```
 
