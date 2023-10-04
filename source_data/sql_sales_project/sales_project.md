@@ -77,9 +77,9 @@ ordernumber|quantityordered|priceeach|orderlinenumber|sales  |orderdate |status 
 
 ```sql
 	SELECT 
-	COUNT(DISTINCT(COUNTRY)) AS country_count
-FROM 
-	sales_project.sales_data;
+		COUNT(DISTINCT(COUNTRY)) AS country_count
+	FROM 
+		sales_project.sales_data;
 ```
 
 country_count|
