@@ -46,7 +46,7 @@ When you want to show actual code in mark down, you have to enclose your code li
 ```
 ````
 
-This will allow your SQL code (or any code for that matter) like so...
+This will allow your SQL code (or any code for that matter) to render with syntax highlighting like so...
 
 ```sql
 	select * 
