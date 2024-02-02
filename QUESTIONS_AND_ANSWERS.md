@@ -164,7 +164,7 @@ Please note that to use UNION, each SELECT statement must
  	
 Let's create two small tables to illustrate this.
 
-````sql
+```sql
 DROP TABLE IF EXISTS coolest_guy_ever;
 CREATE TABLE coolest_guy_ever (
 	name TEXT,
@@ -188,14 +188,14 @@ VALUES
 	('brad pitt', '1994'),
 	('jaime shaker', '1998'),
 	('george clooney', '2001');
-````
+```
 Let's use a simple **UNION** with our SQL statements.
 
-````sql
+```sql
 SELECT * FROM coolest_guy_ever
 UNION
 SELECT * FROM sexiest_guy_ever;
-````
+```
 **Results:** (Only distinct values are returned)
 
 name             |year|
@@ -208,11 +208,11 @@ jaime shaker     |1998|
 
 Let's use a simple **UNION ALL**.
 
-````sql
+```sql
 SELECT * FROM coolest_guy_ever
 UNION ALL
 SELECT * FROM sexiest_guy_ever;
-````
+```
 **Results:** (Returns duplicate values)
 
 name             |year|
@@ -237,7 +237,7 @@ RANK, DENSE_RANK and ROW_NUMBER are called window functions.  They must be used 
  	
 Let's display these functions with a simple table of users and salaries.
 
-````sql
+```sql
 DROP TABLE IF EXISTS user_salary;
 CREATE TABLE user_salary (
 	user_name TEXT,
@@ -254,10 +254,10 @@ VALUES
 	('heather', 80000),
 	('jennifer', 75000),
 	('ken', 80000);
-````
+```
 Lets use the window functions to show how they work.
 
-````sql
+```sql
 SELECT
 	user_name,
 	salary,
@@ -266,7 +266,7 @@ SELECT
 	ROW_NUMBER() OVER ()
 FROM
 	user_salary;
-````
+```
 
 The results are ordered by salary in descending order.
 * **RANK**: Shows that some user salaries tied, but then skips that amount until the next rank.
@@ -299,7 +299,7 @@ We can display this by performing a **LEFT ANTI-JOIN**.
  	
 Let's create 2 different tables for this query.
 
-````sql
+```sql
 -- Create first table and add values
 DROP TABLE IF EXISTS left_table;
 CREATE TABLE left_table (
@@ -314,9 +314,9 @@ VALUES
 	(4),
 	(5),
 	(6);
-````
+```
 
-````sql
+```sql
 -- Create second table and add values
 DROP TABLE IF EXISTS right_table;
 CREATE TABLE right_table (
@@ -331,18 +331,18 @@ VALUES
 	(6),
 	(6),
 	(6);
-````
+```
 
 Let's perform our **LEFT ANTI-JOIN**.
 
-````sql
+```sql
 SELECT
 	lt.id
 FROM left_table AS lt
 LEFT JOIN right_table AS rt
 ON lt.id = rt.id
 WHERE rt.id IS null;
-````
+```
 
 **Results:**
 
@@ -365,7 +365,7 @@ by the department of each individual employee.
  	
 I will add a manager id column to be used in the next question.
 
-````sql
+```sql
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
 	emp_id int,
@@ -389,11 +389,11 @@ VALUES
 	(10, 'jennifer', 12, 'HR', 71000),
 	(11, 'trish', 12, 'HR', 58000),
 	(12, 'marge', 0, 'HR', 70000);
-````
+```
 
 Let's create a CTE (**Common Table Expression**) that assigns a rank value to each row by partition.
 
-````sql
+```sql
 WITH get_salary_rank AS (
 	SELECT
 		emp_name,
@@ -403,10 +403,10 @@ WITH get_salary_rank AS (
 	FROM
 		employee
 )
-````
+```
 Now, lets select **name**, **department** and **salary** where the rank = 2 from the CTE result set.
 
-````sql
+```sql
 SELECT
 	emp_name,
 	department,
@@ -416,7 +416,7 @@ FROM
 	get_salary_rank
 WHERE
 	rnk = 2;
-````
+```
 
 **Results:**
 
@@ -435,7 +435,7 @@ Using the employee salary from the previous question, we can
 find this answer using a sub-query in the **WHERE** clause. I added
 a sub-query to the select statement to also show the manager's salary for reference.
 
-````sql
+```sql
 SELECT
 	e1.emp_name,
 	e1.department,
@@ -445,7 +445,7 @@ FROM
 	employee AS e1
 WHERE
 	e1.salary > (SELECT salary from employee WHERE emp_id = e1.manager_id);
-````
+```
 
 **Results:**
 
@@ -466,7 +466,7 @@ Using the left_table and right_table from question #5, we can see how they work.
 
 **INNER JOIN**:
 
-````sql
+```sql
 SELECT
 	lt.id
 FROM
@@ -475,7 +475,7 @@ INNER JOIN
 	right_table AS rt
 ON
 	lt.id = rt.id;
-````
+```
 
 **Results:**
 
@@ -492,7 +492,7 @@ id|
 
  **LEFT JOIN**:
 
-````sql
+```sql
 SELECT
 	lt.id
 FROM
@@ -501,7 +501,7 @@ LEFT JOIN
 	right_table AS rt
 ON
 	lt.id = rt.id;
-````
+```
 
 **Results:**
 
@@ -528,7 +528,7 @@ This question can be answered using a **CASE** statement in an update query.
 
 First, lets create a table where (**M**)ales have an odd id number and (**F**)emales have an even id number.
 
-````sql
+```sql
 DROP TABLE IF EXISTS people;
 CREATE TABLE people (
 	id int GENERATED ALWAYS AS IDENTITY,
@@ -546,12 +546,12 @@ VALUES
 	('ellen', 'F'),
 	('christopher', 'M'),
 	('maria', 'F');
-````
+```
 Let's take a look at the table.
 
-````sql
+```sql
 SELECT * FROM people;
-````
+```
 
 **Results:**
 
@@ -568,7 +568,7 @@ id|name       |gender|
 
  Now let's **UPDATE** the table and swap the gender values using a **CASE** statement.
 
-````sql
+```sql
 UPDATE people
 SET gender = 
 	CASE
@@ -577,13 +577,13 @@ SET gender =
 	END
 WHERE
 	gender IS NOT NULL;
-````
+```
 
 Let's take a look at the table.
 
-````sql
+```sql
 SELECT * FROM people;
-````
+```
 
 **Results:**
 
@@ -856,11 +856,11 @@ Let's **DELETE** all rows with even number ID's.
 ```sql
 DELETE FROM generic_table
 WHERE (id % 2) = 0;
-````
+```
 
 Let's take a look at our generic table after the **DELETE** statement.
 
-````sql
+```sql
 select * from generic_table;
 ```
 **Results**:
@@ -1419,7 +1419,7 @@ type for readability.
 
 For this example I am using the **NOW()** function to return a timestamp.
 
-````sql
+```sql
 SELECT 
 	now() AS moment_in_time,
 	EXTRACT(century FROM now())::numeric AS century,
@@ -1428,7 +1428,7 @@ SELECT
 	EXTRACT(MONTH FROM now())::numeric AS month,
 	EXTRACT(DAY FROM now())::numeric AS day,
 	EXTRACT(TIMEZONE_HOUR FROM now())::numeric AS timezone;
-````
+```
 
 **Results**: 
 
@@ -1445,7 +1445,7 @@ This problem can be solved using a sub-query in the WHERE statement.
 	
 Let's use a CTE with the **GENERATE_SERIES()** function to create 10 rows to query.
 
-````sql
+```sql
 WITH get_half AS (
 	SELECT
 		*
@@ -1457,7 +1457,7 @@ FROM
 	get_half
 WHERE
 	generate_series <= (SELECT count(*)/2 FROM get_half);
-````
+```
 
 **Results**: 
 
@@ -1481,7 +1481,7 @@ We would need to add the **ON CONFLICT** clause to the **INSERT** statement to u
 	
 For this exercise we will presuppose that the user_name MUST be unique and a user can only have ONE phone number on record. 
 
-````sql
+```sql
 DROP TABLE IF EXISTS user_phone_number;
 
 CREATE TABLE user_phone_number (
@@ -1496,7 +1496,7 @@ VALUES
 	('kristen', '222-222-2222');
 
 SELECT * FROM user_phone_number;
-````
+```
 We now have a table with unique user_names and a phone number.
 
 **Results**: 
@@ -1509,19 +1509,19 @@ kristen  |222-222-2222|
 
 If we attempt to add another phone number to an existing user, a conflict will occur.  We could use **DO NOTHING** which does nothing if the user_name already exists.
 
-````sql
+```sql
 INSERT INTO user_phone_number (user_name, user_phone)
 VALUES
 	('jaime', '123-456-7890')
 ON CONFLICT (user_name)
 DO NOTHING;
-````
+```
 
 ❗ OR ❗
 
 We could update the record.
 
-````sql
+```sql
 INSERT INTO user_phone_number (user_name, user_phone)
 VALUES
 	('jaime', '123-456-7890')
@@ -1530,7 +1530,7 @@ DO
 	UPDATE SET user_phone = '123-456-7890';
 
 SELECT * FROM user_phone_number;
-````
+```
 
 **Results**:
 
@@ -1542,7 +1542,7 @@ jaime    |123-456-7890|
 
 However, if we do not wish to overwrite the previous record, we could append/concatnate the new phone number to the existing value instead of using the previous statement.
 
-````sql
+```sql
 INSERT INTO user_phone_number (user_name, user_phone)
 VALUES
 	('jaime', '123-456-7890')
@@ -1551,7 +1551,7 @@ DO
 	UPDATE SET user_phone = EXCLUDED.user_phone || ';' || user_phone_number.user_phone;
 
 SELECT * FROM user_phone_number;
-````
+```
 
 **Results**:
 
@@ -1570,9 +1570,9 @@ The **COALESCE()** function has the same functionality as **IFNULL** in standard
 	
 Once it has found the first non-null argument, all other arguments are NOT evaluated.  It will return a null value if all arguments are null.
 
-````sql
+```sql
 SELECT COALESCE(NULL, 'jaime', 'shaker');
-````
+```
 
 **Results**: 
 
@@ -1587,9 +1587,9 @@ jaime   |
 
 No.  The **COALESCE()** function can accept an unlimited number of arguments and returns the first non-null argument.  Although You can mimic a **NULLIF()** function, they are different.  Let's add a **' '** to our previous query to display what **COALESCE()** returns.
 
-````sql
+```sql
 SELECT COALESCE(NULL, '', 'jaime', 'shaker');
-````
+```
 
 **Results**: 
 
@@ -1599,9 +1599,9 @@ coalesce|
 
 This results in an empty value because empty (' ') and NULL are not the same.  The **NULLIF()** function returns NULL if argument #1 is equal to Argument #2, else it returns Argument #1.
 
-````sql
+```sql
 SELECT NULLIF('jaime', 'shaker');
-````
+```
 
 **Results**: 
 
@@ -1611,9 +1611,9 @@ jaime |
 
 However, if the arguments equal each other...
 
-````sql
+```sql
 SELECT NULLIF('shaker', 'shaker');
-````
+```
 
 **Results**:  (Returns **NULL**)
 
@@ -1623,7 +1623,7 @@ nullif|
 
 We can display how they can work together with a table that has both empty fields and NULL fields.
 
-````sql
+```sql
 DROP TABLE IF EXISTS convert_nulls;
 
 CREATE TABLE convert_nulls (
@@ -1640,7 +1640,7 @@ VALUES
 	('chris', NULL, 'IL');
 
 SELECT * FROM convert_nulls;
-````
+```
 
 **Results**:
 
@@ -1652,7 +1652,7 @@ chris    |           |IL   |
 
 Let's use the **NULLIF()** function to convert empty (' ') values to NULL and the **COALESCE()** function to convert NULLs to 'unknown'.
 
-````sql
+```sql
 SELECT
 	user_name,
 /*
@@ -1663,7 +1663,7 @@ SELECT
 	state
 FROM
 	convert_nulls;
-````
+```
 
 **Results**:
 
