@@ -97,7 +97,7 @@ You can delete duplicate rows by using a **DELETE USING** statement.
  	
 Use the table created in the previous question to show how to delete those duplicates entries.
 
-````sql
+```sql
 DELETE 
 FROM 
 	-- Add an alias to the id's we wish to keep
@@ -114,7 +114,7 @@ AND
 ```
 Run the previous query to check again for duplicate entries.
 
-````sql
+```sql
 SELECT
 	-- Get the column.
 	animal_type,
@@ -128,12 +128,12 @@ GROUP BY
 HAVING 
 	-- Only select values that have a count greater than one (multiple entries).
 	count(*) > 1;
-````
+```
 Now, let's check the contents of the table.  From the results returned, we can see that the duplicate entries have been deleted.
 
-````sql
+```sql
 SELECT * FROM animals;
-````
+```
 
 **Results:**
 
